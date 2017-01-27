@@ -26,18 +26,19 @@ class UdacityAPIClient: NSObject {
     
     // MARK: - Methods
     
-    func taskForSessionOperation(httpMethod: String, jsonBody: String?, addCsrf: Bool = false, completionHandler: @escaping (_ result: [String:Any]?, _ error: NSError?) -> Void) {
+    func taskForSession(httpMethod: String, jsonBody: String?, addCsrf: Bool = false, completionHandler: @escaping (_ result: [String:Any]?, _ error: NSError?) -> Void) {
         
-        // Build the request from URL and configure it.
-        var request = URLRequest(url: udacityAuthURL())
+        // Build the request from URL and configure it ..
+        let apiMethod = "/\(Methods.Session)"
         
+        var request = URLRequest(url: udacityApiURL(withPathExtension: apiMethod))
         request = configureAPIRequest(requestObj: request, method: httpMethod, body: jsonBody)
         
         if addCsrf {
             request = addCsrfToRequest(requestObj: request)
         }
         
-        // Make the request
+        // Make the request ..
         let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
             
             func reportError(_ error: String) {
@@ -59,24 +60,68 @@ class UdacityAPIClient: NSObject {
             
             /* GUARD: Was there any data returned? */
             guard data != nil else {
-                reportError("No data was returned by the request !")
+                reportError("Data curruption from the server. Sorry for the inconvenince")
                 return
             }
             
-            // Extact the raw data and
+            // Extact the raw data and pass it for parsing.
             let skipped = self.skipFiveCharsFromResponse(responseData: data)!
             self.convertDataWithCompletionHandler(skipped, completionHandlerForConvertData: completionHandler)
         })
         
-        // Start the request
+        // Start the request ..
         task.resume()
     }
     
-    private func udacityAuthURL(withPathExtension: String? = nil) -> URL {
+    func taskForRetrieval(userKey: String, completionHandler: @escaping (_ result: [String:Any]?, _ error: NSError?) -> Void) {
+
+        // Build the request from URL and configure it ..
+        let apiMethod = "/\(Methods.Users)/\(userKey)"
+        
+        var request = URLRequest(url: udacityApiURL(withPathExtension: apiMethod))
+        request = configureAPIRequest(requestObj: request, method: "GET", body: nil)
+        
+        // Make the request ..
+        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+            
+            func reportError(_ error: String) {
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandler(nil, NSError(domain: "taskForSessionlogin", code: 1, userInfo: userInfo))
+            }
+            
+            /* GUARD: Was there an error? */
+            guard (error == nil) else {
+                reportError("There was an error with the login process: \(error)")
+                return
+            }
+            
+            /* GUARD: Did we get a status code out of the api expected ones ? */
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode < 500 && statusCode >= 200 else {
+                reportError("There was an unexpected error while attempting login. Try again.")
+                return
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard data != nil else {
+                reportError("Data curruption from the server. Sorry for the inconvenince")
+                return
+            }
+            
+            // Extact the raw data and pass it for parsing.
+            let skipped = self.skipFiveCharsFromResponse(responseData: data)!
+            self.convertDataWithCompletionHandler(skipped, completionHandlerForConvertData: completionHandler)
+        })
+        
+        // Start the request ..
+        task.resume()
+
+    }
+    
+    private func udacityApiURL(withPathExtension: String? = nil) -> URL {
         var components = URLComponents()
         components.scheme = UdacityAPIClient.Constants.ApiScheme
         components.host = UdacityAPIClient.Constants.ApiHost
-        components.path = UdacityAPIClient.Constants.ApiPath + "/\(Methods.Session)"
+        components.path = UdacityAPIClient.Constants.ApiPath + (withPathExtension ?? "") // C# memories ...
         
         return components.url!
     }
@@ -125,7 +170,6 @@ class UdacityAPIClient: NSObject {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
             completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
         }
-        
         
         completionHandlerForConvertData(parsedResult, nil)
     }

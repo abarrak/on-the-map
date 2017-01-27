@@ -47,5 +47,10 @@ extension UdacityAPIClient {
         // In error cases.
         static let Error = "error"
         static let Status = "status"
+        
+        // 'user' is dictionary root key that cotains the user's udacity profile. Rest are childern keys for it.
+        static let User = "user"
+        static let FirstName = "first_name"
+        static let LastName = "last_name"
     }
 }
