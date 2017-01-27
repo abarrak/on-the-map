@@ -24,6 +24,15 @@ class MapTabBarController: UITabBarController {
     // Mark: - Methods
     
     func logoutPressed() {
+        
+    }
+    
+    func refersh() {
+        
+    }
+    
+    func pin() {
+        
     }
     
     private func setupTopBar() {
@@ -32,6 +41,18 @@ class MapTabBarController: UITabBarController {
                                                            style: UIBarButtonItemStyle.plain,
                                                            target: self,
                                                            action: #selector(logoutPressed))
+        
+        let refershButton = UIBarButtonItem(image: #imageLiteral(resourceName: "RefershIcon"),
+                                            style: UIBarButtonItemStyle.plain,
+                                            target: self,
+                                            action: #selector(refersh))
+        
+        let pinButton = UIBarButtonItem(image: #imageLiteral(resourceName: "PinIcon"),
+                                        style: UIBarButtonItemStyle.plain,
+                                        target: self,
+                                        action: #selector(pin))
+        
+        navigationItem.rightBarButtonItems = [refershButton, pinButton]
     }
     
     // Mark: - Helpers
