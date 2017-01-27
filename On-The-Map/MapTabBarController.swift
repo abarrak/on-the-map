@@ -14,6 +14,10 @@ class MapTabBarController: UITabBarController {
     var sessionID: String? = nil
     var userKey: String? = nil
     
+    var logoutButton: UIBarButtonItem? = nil
+    var refershButton: UIBarButtonItem? = nil
+    var pinButton: UIBarButtonItem? = nil
+    
     // Mark: - Life Cycle
     
     override func viewDidLoad() {
@@ -24,7 +28,27 @@ class MapTabBarController: UITabBarController {
     // Mark: - Methods
     
     func logoutPressed() {
+        setUIEnabled(false)
         
+        UdacityAPIClient.sharedInstance().logout {
+            (sucess, errorMsg) in
+            
+            if !sucess {
+                performUIUpdatesOnMain({
+                    super.alertMessage("Failure", message: errorMsg!)
+                    self.setUIEnabled(true)
+                })
+                return
+            }
+            
+            performUIUpdatesOnMain({
+                self.setUIEnabled(true)
+                self.sessionID = nil
+                self.userKey = nil
+
+                _ = self.navigationController?.popToRootViewController(animated: true)
+            })
+        }
     }
     
     func refersh() {
@@ -36,23 +60,23 @@ class MapTabBarController: UITabBarController {
     }
     
     private func setupTopBar() {
+        logoutButton = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.plain,
+                                       target: self,
+                                       action: #selector(logoutPressed))
+        
+        refershButton = UIBarButtonItem(image: #imageLiteral(resourceName: "RefershIcon"), style: UIBarButtonItemStyle.plain,
+                                        target: self, action: #selector(refersh))
+        
+        pinButton = UIBarButtonItem(image: #imageLiteral(resourceName: "PinIcon"), style: UIBarButtonItemStyle.plain,
+                                    target: self, action: #selector(pin))
+        
         navigationItem.title = "On The Map"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout",
-                                                           style: UIBarButtonItemStyle.plain,
-                                                           target: self,
-                                                           action: #selector(logoutPressed))
-        
-        let refershButton = UIBarButtonItem(image: #imageLiteral(resourceName: "RefershIcon"),
-                                            style: UIBarButtonItemStyle.plain,
-                                            target: self,
-                                            action: #selector(refersh))
-        
-        let pinButton = UIBarButtonItem(image: #imageLiteral(resourceName: "PinIcon"),
-                                        style: UIBarButtonItemStyle.plain,
-                                        target: self,
-                                        action: #selector(pin))
-        
-        navigationItem.rightBarButtonItems = [refershButton, pinButton]
+        navigationItem.leftBarButtonItem = logoutButton
+        navigationItem.rightBarButtonItems = [refershButton!, pinButton!]
+    }
+    
+    private func setUIEnabled(_ enabled: Bool) {
+        logoutButton?.isEnabled = enabled
     }
     
     // Mark: - Helpers

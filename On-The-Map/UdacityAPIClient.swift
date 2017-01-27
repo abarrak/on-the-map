@@ -26,12 +26,12 @@ class UdacityAPIClient: NSObject {
     
     // MARK: - Methods
     
-    func taskForSessionOperation(jsonBody: String?, addCsrf: Bool = false, completionHandler: @escaping (_ result: [String:Any]?, _ error: NSError?) -> Void) {
+    func taskForSessionOperation(httpMethod: String, jsonBody: String?, addCsrf: Bool = false, completionHandler: @escaping (_ result: [String:Any]?, _ error: NSError?) -> Void) {
         
         // Build the request from URL and configure it.
         var request = URLRequest(url: udacityAuthURL())
         
-        request = configureAPIRequest(requestObj: request, method: "POST", body: jsonBody)
+        request = configureAPIRequest(requestObj: request, method: httpMethod, body: jsonBody)
         
         if addCsrf {
             request = addCsrfToRequest(requestObj: request)

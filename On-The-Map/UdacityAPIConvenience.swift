@@ -15,7 +15,7 @@ extension UdacityAPIClient {
         
         let body = loginRequestBody(username: username.trim(), password: password.trim())
         
-        let _ = taskForSessionOperation(jsonBody: body) { (results, error) in
+        let _ = taskForSessionOperation(httpMethod: "POST", jsonBody: body) { (results, error) in
             if error != nil {
                 completionHandlerForSession(false, nil, nil, "Login Failed (Request Error): \(error)")
                 return
@@ -32,7 +32,7 @@ extension UdacityAPIClient {
             let accountDict = results?[JSONResponseKeys.Account] as? [String:Any?]
             
             if sessionDict == nil || accountDict == nil {
-                completionHandlerForSession(false, nil, nil, "Unexpected Error occured .. \(error)")
+                completionHandlerForSession(false, nil, nil, "Unexpected parsing error occured. \(error)")
                 return
             }
 
@@ -43,13 +43,42 @@ extension UdacityAPIClient {
             if sessionID != nil && userID != nil {
                 completionHandlerForSession(true, sessionID!, userID!, nil)
             } else {
-                completionHandlerForSession(false, nil, nil, "Unexpected Error occured .. \(error)")
+                completionHandlerForSession(false, nil, nil, "Unexpected parsing error occured. \(error)")
             }
         }
     }
   
-    func logout(completionHandlerForAuth: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
+    func logout(completionHandlerForSession: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
         
+        let _ = taskForSessionOperation(httpMethod: "DELETE", jsonBody: nil, addCsrf: true) { (results, error) in
+            if error != nil {
+                completionHandlerForSession(false, "Logout Failed. \(error)")
+                return
+            }
+            
+            // Were there any 4xx errors ?
+            if let error = results?[JSONResponseKeys.Error] {
+                completionHandlerForSession(false, "Logout failed. \(error)")
+                return
+            }
+            
+            // Extract json top level keys.
+            let sessionDict = results?[JSONResponseKeys.Session] as? [String:Any?]
+            
+            if sessionDict == nil {
+                completionHandlerForSession(false, "Unexpected parsing error occured. \(error)")
+                return
+            }
+            
+            // Extract our auth string.
+            let sessionID = sessionDict?[JSONResponseKeys.Id] as? String
+            
+            if sessionID != nil {
+                completionHandlerForSession(true, nil)
+            } else {
+                completionHandlerForSession(false,"Unexpected parsing error occured. \(error)")
+            }
+        }
     }
     
     

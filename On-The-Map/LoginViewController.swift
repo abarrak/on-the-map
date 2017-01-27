@@ -160,19 +160,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         // Make background transparent.
         textField.backgroundColor = UIColor.clear
-    }
-    
-    private func alertMessage(_ title: String, message: String) {
-        let alert = UIAlertController(title: title,
-                                      message: message,
-                                      preferredStyle: UIAlertControllerStyle.alert)
-        
-        let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.default) {
-            action in self.dismiss(animated: true, completion: nil)
-        }
-        
-        alert.addAction(okAction)
-        
-        present(alert, animated: true, completion: nil)
-    }
+    }    
 }

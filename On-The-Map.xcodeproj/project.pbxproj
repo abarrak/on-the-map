@@ -26,6 +26,7 @@
 		B8BAC61D1E3BA4F00068A741 /* MapTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAC61C1E3BA4F00068A741 /* MapTabBarController.swift */; };
 		B8BAC61F1E3BBE640068A741 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAC61E1E3BBE640068A741 /* MapViewController.swift */; };
 		B8BAC6211E3BBE930068A741 /* StudentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAC6201E3BBE930068A741 /* StudentsTableViewController.swift */; };
+		B8BAC6231E3BC9A50068A741 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAC6221E3BC9A50068A741 /* ViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		B8BAC61C1E3BA4F00068A741 /* MapTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTabBarController.swift; sourceTree = "<group>"; };
 		B8BAC61E1E3BBE640068A741 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B8BAC6201E3BBE930068A741 /* StudentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsTableViewController.swift; sourceTree = "<group>"; };
+		B8BAC6221E3BC9A50068A741 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,10 +174,11 @@
 			children = (
 				B8AABE631E32C4400063BAA9 /* AppDelegate.swift */,
 				B8AABE921E32C6ED0063BAA9 /* GCDBlackBox.swift */,
+				B8BAC61A1E3BA1E40068A741 /* StringExtension.swift */,
+				B8BAC6221E3BC9A50068A741 /* ViewControllerExtension.swift */,
 				B8AABE6A1E32C4400063BAA9 /* Assets.xcassets */,
 				B8AABE6C1E32C4400063BAA9 /* LaunchScreen.storyboard */,
 				B8AABE6F1E32C4400063BAA9 /* Info.plist */,
-				B8BAC61A1E3BA1E40068A741 /* StringExtension.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				B8BAC6211E3BBE930068A741 /* StudentsTableViewController.swift in Sources */,
 				B8341E581E3925DD00402193 /* ParseAPIConstants.swift in Sources */,
 				B8BAC61F1E3BBE640068A741 /* MapViewController.swift in Sources */,
+				B8BAC6231E3BC9A50068A741 /* ViewControllerExtension.swift in Sources */,
 				B8AABE641E32C4400063BAA9 /* AppDelegate.swift in Sources */,
 				B8BAC61D1E3BA4F00068A741 /* MapTabBarController.swift in Sources */,
 				B8341E531E3925CB00402193 /* UdacityAPIClient.swift in Sources */,
