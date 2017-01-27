@@ -45,6 +45,7 @@ class MapTabBarController: UITabBarController {
                 self.setUIEnabled(true)
                 self.sessionID = nil
                 self.userKey = nil
+                 self.alertMessage("Success", message: "Logged out successfully.")
 
                 _ = self.navigationController?.popToRootViewController(animated: true)
             })
@@ -52,7 +53,6 @@ class MapTabBarController: UITabBarController {
     }
     
     func refersh() {
-        
     }
     
     func pin() {

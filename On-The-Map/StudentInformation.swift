@@ -1,5 +1,5 @@
 //
-//  StudentLocation.swift
+//  StudentInformation.swift
 //  OnTheMap
 //
 //  Created by Abdullah on 11/30/16.
@@ -8,23 +8,29 @@
 
 import Foundation
 
-struct StudentLocation {
+struct StudentInformation {
+    
+    // - Mark: Properties
+    
     // Parse auto-generated id which uniquely identifies a StudentLocation.
     let objectId: String
     
     // An extra (optional) key used to uniquely identify a StudentLocation.
     // Should be populated this value using your Udacity account id
     let uniqueKey: String
-    //
+
     let firstName: String
     let lastName: String
-    
+
     // The location string used for geocoding the student location.
     let mapString: String
+    
     // The URL provided by the student.
     let mediaURL: String
+    
     // The latitude of the student location (ranges from -90 to 90).
     let latitude: Float
+    
     // The longitude of the student location (ranges from -180 to 180).
     let longitude: Float
 
@@ -32,8 +38,10 @@ struct StudentLocation {
     let updatedAt: Date
     
     // Parse access and control list (ACL), i.e. permissions, for this StudentLocation entry.
-    // let ACL: PFACL
-    
+    //   let ACL: PFACL
+
+    // - Mark: Initializers
+
     init(dictionary: [String : AnyObject]) {
         objectId    = dictionary[ParseAPIClient.JSONResponseKeys.ObjectId]  as! String
         uniqueKey   = dictionary[ParseAPIClient.JSONResponseKeys.UniqueKey] as! String
@@ -47,21 +55,23 @@ struct StudentLocation {
         updatedAt   = dictionary[ParseAPIClient.JSONResponseKeys.UpdatedAt] as! Date
     }
     
-    static func locationsFromResults(_ results: [[String : AnyObject]]) -> [StudentLocation] {
-        var locations = [StudentLocation]()
+    // - Mark: Methods
+
+    static func informationFromResults(_ results: [[String : AnyObject]]) -> [StudentInformation] {
+        var information = [StudentInformation]()
         
         for r in results {
-            locations.append(StudentLocation(dictionary: r))
+            information.append(StudentInformation(dictionary: r))
         }
         
-        return locations
+        return information
     }
 }
 
-// MARK: - StudentLocation: Equatable
+// MARK: - StudentInformation: Equatable
 
-extension StudentLocation: Equatable {}
+extension StudentInformation: Equatable {}
 
-func ==(lhs: StudentLocation, rhs: StudentLocation) -> Bool {
+func ==(lhs: StudentInformation, rhs: StudentInformation) -> Bool {
     return lhs.uniqueKey == rhs.uniqueKey
 }

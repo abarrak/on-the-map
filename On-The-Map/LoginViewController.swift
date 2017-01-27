@@ -130,7 +130,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
             
             performUIUpdatesOnMain({
-                // self.alertMessage("Success", message: "\(sessionID) === \(userID)")
                 self.setUIEnabled(true)
 
                 self.authID = sessionID!
