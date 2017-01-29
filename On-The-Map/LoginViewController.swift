@@ -119,9 +119,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         setUIEnabled(false)
         
         UdacityAPIClient.sharedInstance().login(username: emailText.text!, password: passwordText.text!) {
-            (sucess, sessionID, userID, errorMsg) in
+            (success, sessionID, userID, errorMsg) in
             
-            if !sucess {
+            if !success {
                 performUIUpdatesOnMain({
                     self.alertMessage("Failure", message: errorMsg!)
                     self.setUIEnabled(true)

@@ -10,7 +10,7 @@ import Foundation
 
 struct StudentInformation {
     
-    // - Mark: Properties
+    // Mark: - Properties
     
     // Parse auto-generated id which uniquely identifies a StudentLocation.
     let objectId: String
@@ -37,25 +37,29 @@ struct StudentInformation {
     let createdAt: Date
     let updatedAt: Date
     
+    var fullName: String {
+        return firstName + " " + lastName
+    }
+    
     // Parse access and control list (ACL), i.e. permissions, for this StudentLocation entry.
     //   let ACL: PFACL
 
-    // - Mark: Initializers
+    // Mark: - Initializers
 
     init(dictionary: [String : AnyObject]) {
-        objectId    = dictionary[ParseAPIClient.JSONResponseKeys.ObjectId]  as! String
-        uniqueKey   = dictionary[ParseAPIClient.JSONResponseKeys.UniqueKey] as! String
-        firstName   = dictionary[ParseAPIClient.JSONResponseKeys.FirstName] as! String
-        lastName    = dictionary[ParseAPIClient.JSONResponseKeys.LastName]  as! String
-        mapString   = dictionary[ParseAPIClient.JSONResponseKeys.MapString] as! String
-        mediaURL    = dictionary[ParseAPIClient.JSONResponseKeys.MediaURL]  as! String
-        latitude    = dictionary[ParseAPIClient.JSONResponseKeys.Latitude]  as! Float
-        longitude   = dictionary[ParseAPIClient.JSONResponseKeys.Longitude] as! Float
-        createdAt   = dictionary[ParseAPIClient.JSONResponseKeys.CreatedAt] as! Date
-        updatedAt   = dictionary[ParseAPIClient.JSONResponseKeys.UpdatedAt] as! Date
+        objectId    = dictionary[ParseAPIClient.Constants.JSONResponseKeys.ObjectId]  as! String
+        uniqueKey   = dictionary[ParseAPIClient.Constants.JSONResponseKeys.UniqueKey] as! String
+        firstName   = dictionary[ParseAPIClient.Constants.JSONResponseKeys.FirstName] as! String
+        lastName    = dictionary[ParseAPIClient.Constants.JSONResponseKeys.LastName]  as! String
+        mapString   = dictionary[ParseAPIClient.Constants.JSONResponseKeys.MapString] as! String
+        mediaURL    = dictionary[ParseAPIClient.Constants.JSONResponseKeys.MediaURL]  as! String
+        latitude    = dictionary[ParseAPIClient.Constants.JSONResponseKeys.Latitude]  as! Float
+        longitude   = dictionary[ParseAPIClient.Constants.JSONResponseKeys.Longitude] as! Float
+        createdAt   = dictionary[ParseAPIClient.Constants.JSONResponseKeys.CreatedAt] as! Date
+        updatedAt   = dictionary[ParseAPIClient.Constants.JSONResponseKeys.UpdatedAt] as! Date
     }
     
-    // - Mark: Methods
+    // Mark: - Methods
 
     static func informationFromResults(_ results: [[String : AnyObject]]) -> [StudentInformation] {
         var information = [StudentInformation]()

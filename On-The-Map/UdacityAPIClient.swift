@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class UdacityAPIClient: NSObject {
+class UdacityAPIClient: AbstractAPI {
     
     // MARK: - Properties
     
@@ -26,10 +26,11 @@ class UdacityAPIClient: NSObject {
     
     // MARK: - Methods
     
-    func taskForSession(httpMethod: String, jsonBody: String?, addCsrf: Bool = false, completionHandler: @escaping (_ result: [String:Any]?, _ error: NSError?) -> Void) {
+     func taskForSession(httpMethod: String, jsonBody: String?, addCsrf: Bool = false,
+                        completionHandler: @escaping handlerType) {
         
         // Build the request from URL and configure it ..
-        let apiMethod = "/\(Methods.Session)"
+        let apiMethod = "/\(Constants.Methods.Session)"
         
         var request = URLRequest(url: udacityApiURL(withPathExtension: apiMethod))
         request = configureAPIRequest(requestObj: request, method: httpMethod, body: jsonBody)
@@ -53,30 +54,31 @@ class UdacityAPIClient: NSObject {
             }
             
             /* GUARD: Did we get a status code out of the api expected ones ? */
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode < 500 && statusCode >= 200 else {
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode < 500 else {
                 reportError("There was an unexpected error while attempting login. Try again.")
                 return
             }
             
             /* GUARD: Was there any data returned? */
             guard data != nil else {
-                reportError("Data curruption from the server. Sorry for the inconvenince")
+                reportError("Data curruption from the server. Sorry for the inconvenience.")
                 return
             }
             
             // Extact the raw data and pass it for parsing.
             let skipped = self.skipFiveCharsFromResponse(responseData: data)!
-            self.convertDataWithCompletionHandler(skipped, completionHandlerForConvertData: completionHandler)
+            self.convertDataWithCompletionHandler(skipped,
+                                                  completionHandlerForConvertData: completionHandler)
         })
         
         // Start the request ..
         task.resume()
     }
     
-    func taskForRetrieval(userKey: String, completionHandler: @escaping (_ result: [String:Any]?, _ error: NSError?) -> Void) {
-
+    func taskForRetrieval(userKey: String, completionHandler: @escaping handlerType) {
+        
         // Build the request from URL and configure it ..
-        let apiMethod = "/\(Methods.Users)/\(userKey)"
+        let apiMethod = "/\(Constants.Methods.Users)/\(userKey)"
         
         var request = URLRequest(url: udacityApiURL(withPathExtension: apiMethod))
         request = configureAPIRequest(requestObj: request, method: "GET", body: nil)
@@ -96,8 +98,8 @@ class UdacityAPIClient: NSObject {
             }
             
             /* GUARD: Did we get a status code out of the api expected ones ? */
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode < 500 && statusCode >= 200 else {
-                reportError("There was an unexpected error while attempting login. Try again.")
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode < 500 else {
+                reportError("There was an unexpected error while attempting uesr profile read. Try again.")
                 return
             }
             
@@ -109,13 +111,15 @@ class UdacityAPIClient: NSObject {
             
             // Extact the raw data and pass it for parsing.
             let skipped = self.skipFiveCharsFromResponse(responseData: data)!
-            self.convertDataWithCompletionHandler(skipped, completionHandlerForConvertData: completionHandler)
+            self.convertDataWithCompletionHandler(skipped,
+                                                  completionHandlerForConvertData: completionHandler)
         })
         
         // Start the request ..
         task.resume()
-
     }
+    
+    // MARK: - Helpers
     
     private func udacityApiURL(withPathExtension: String? = nil) -> URL {
         var components = URLComponents()
@@ -126,17 +130,19 @@ class UdacityAPIClient: NSObject {
         return components.url!
     }
     
-    private func configureAPIRequest(requestObj: URLRequest, method: String, body: String? = nil) -> URLRequest {
+    private func configureAPIRequest(requestObj: URLRequest, method: String,
+                                     body: String? = nil) -> URLRequest {
         var request = requestObj
         
         request.httpMethod = method
+        
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         if let body = body {
             request.httpBody = body.data(using: String.Encoding.utf8)
         }
-
+        
         return request
     }
     
@@ -162,18 +168,22 @@ class UdacityAPIClient: NSObject {
     }
     
     // Given raw JSON, return a usable Foundation object.
-    private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: [String:Any]?, _ error: NSError?) -> Void) {
+    private func convertDataWithCompletionHandler(_ data: Data,
+                                                  completionHandlerForConvertData: handlerType) {
         var parsedResult: [String:Any]? = nil
+        
         do {
-            parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]
+            parsedResult = try JSONSerialization.jsonObject(with: data,
+                                                            options: .allowFragments) as? [String:Any]
         } catch {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
-            completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
+            completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler",
+                                                         code: 1,
+                                                         userInfo: userInfo))
         }
         
         completionHandlerForConvertData(parsedResult, nil)
     }
-    
     
     // MARK: - Shared Instance
     

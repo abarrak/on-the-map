@@ -27,6 +27,9 @@
 		B8BAC61F1E3BBE640068A741 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAC61E1E3BBE640068A741 /* MapViewController.swift */; };
 		B8BAC6211E3BBE930068A741 /* StudentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAC6201E3BBE930068A741 /* StudentsTableViewController.swift */; };
 		B8BAC6231E3BC9A50068A741 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAC6221E3BC9A50068A741 /* ViewControllerExtension.swift */; };
+		B8BAC6251E3BE3920068A741 /* ParseAPIConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAC6241E3BE3920068A741 /* ParseAPIConvenience.swift */; };
+		B8BAC6271E3BF8B80068A741 /* AbstractAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAC6261E3BF8B80068A741 /* AbstractAPI.swift */; };
+		B8D3D1B01E3D207A00CC2493 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D3D1AF1E3D207A00CC2493 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		B8BAC61E1E3BBE640068A741 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B8BAC6201E3BBE930068A741 /* StudentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsTableViewController.swift; sourceTree = "<group>"; };
 		B8BAC6221E3BC9A50068A741 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		B8BAC6241E3BE3920068A741 /* ParseAPIConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPIConvenience.swift; sourceTree = "<group>"; };
+		B8BAC6261E3BF8B80068A741 /* AbstractAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractAPI.swift; sourceTree = "<group>"; };
+		B8D3D1AF1E3D207A00CC2493 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8D3D1B01E3D207A00CC2493 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,8 +110,8 @@
 		B8341E551E3925D200402193 /* Udacity */ = {
 			isa = PBXGroup;
 			children = (
-				B8341E511E3925CB00402193 /* UdacityAPIClient.swift */,
 				B8341E521E3925CB00402193 /* UdacityAPIConstants.swift */,
+				B8341E511E3925CB00402193 /* UdacityAPIClient.swift */,
 				B8B0A5AE1E39694200E2FE20 /* UdacityAPIConvenience.swift */,
 			);
 			name = Udacity;
@@ -115,6 +122,7 @@
 			children = (
 				B8341E561E3925DD00402193 /* ParseAPIConstants.swift */,
 				B8341E571E3925DD00402193 /* ParseAPIClient.swift */,
+				B8BAC6241E3BE3920068A741 /* ParseAPIConvenience.swift */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
@@ -126,6 +134,7 @@
 				B8AABE771E32C4400063BAA9 /* On-The-MapTests */,
 				B8AABE821E32C4400063BAA9 /* On-The-MapUITests */,
 				B8AABE611E32C4400063BAA9 /* Products */,
+				B8D3D1AE1E3D207A00CC2493 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -216,8 +225,17 @@
 			children = (
 				B8341E5A1E3925E400402193 /* Parse */,
 				B8341E551E3925D200402193 /* Udacity */,
+				B8BAC6261E3BF8B80068A741 /* AbstractAPI.swift */,
 			);
 			name = Clients;
+			sourceTree = "<group>";
+		};
+		B8D3D1AE1E3D207A00CC2493 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B8D3D1AF1E3D207A00CC2493 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,9 +376,11 @@
 				B8B0A5AF1E39694200E2FE20 /* UdacityAPIConvenience.swift in Sources */,
 				B8243DB41E33BCFC0078F7B6 /* LoginViewController.swift in Sources */,
 				B8AABE661E32C4400063BAA9 /* RegistrationViewController.swift in Sources */,
+				B8BAC6271E3BF8B80068A741 /* AbstractAPI.swift in Sources */,
 				B8AABE931E32C6ED0063BAA9 /* GCDBlackBox.swift in Sources */,
 				B8341E501E39257800402193 /* StudentInformation.swift in Sources */,
 				B8BAC6211E3BBE930068A741 /* StudentsTableViewController.swift in Sources */,
+				B8BAC6251E3BE3920068A741 /* ParseAPIConvenience.swift in Sources */,
 				B8341E581E3925DD00402193 /* ParseAPIConstants.swift in Sources */,
 				B8BAC61F1E3BBE640068A741 /* MapViewController.swift in Sources */,
 				B8BAC6231E3BC9A50068A741 /* ViewControllerExtension.swift in Sources */,

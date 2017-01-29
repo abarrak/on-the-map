@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On-The-Map/LoginViewController.swift"
-            timestampString = "507231155.322636"
+            timestampString = "507240813.313135"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "isUserCredentialBlank()"
             landmarkType = "7">
          </BreakpointContent>
