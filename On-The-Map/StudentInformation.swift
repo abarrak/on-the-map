@@ -17,28 +17,31 @@ struct StudentInformation {
     
     // An extra (optional) key used to uniquely identify a StudentLocation.
     // Should be populated this value using your Udacity account id
-    let uniqueKey: String
+    let uniqueKey: String?
 
-    let firstName: String
-    let lastName: String
+    let firstName: String?
+    let lastName: String?
 
     // The location string used for geocoding the student location.
-    let mapString: String
+    let mapString: String?
     
     // The URL provided by the student.
-    let mediaURL: String
+    let mediaURL: String?
     
     // The latitude of the student location (ranges from -90 to 90).
-    let latitude: Float
+    let latitude: Float?
     
     // The longitude of the student location (ranges from -180 to 180).
-    let longitude: Float
+    let longitude: Float?
 
-    let createdAt: Date
-    let updatedAt: Date
+    let createdAt: Date?
+    let updatedAt: Date?
     
     var fullName: String {
-        return firstName + " " + lastName
+        if let firstName = firstName, let lastName = lastName {
+            return firstName + " " + lastName
+        }
+        return ""
     }
     
     // Parse access and control list (ACL), i.e. permissions, for this StudentLocation entry.
@@ -48,15 +51,15 @@ struct StudentInformation {
 
     init(dictionary: [String : AnyObject]) {
         objectId    = dictionary[ParseAPIClient.Constants.JSONResponseKeys.ObjectId]  as! String
-        uniqueKey   = dictionary[ParseAPIClient.Constants.JSONResponseKeys.UniqueKey] as! String
-        firstName   = dictionary[ParseAPIClient.Constants.JSONResponseKeys.FirstName] as! String
-        lastName    = dictionary[ParseAPIClient.Constants.JSONResponseKeys.LastName]  as! String
-        mapString   = dictionary[ParseAPIClient.Constants.JSONResponseKeys.MapString] as! String
-        mediaURL    = dictionary[ParseAPIClient.Constants.JSONResponseKeys.MediaURL]  as! String
-        latitude    = dictionary[ParseAPIClient.Constants.JSONResponseKeys.Latitude]  as! Float
-        longitude   = dictionary[ParseAPIClient.Constants.JSONResponseKeys.Longitude] as! Float
-        createdAt   = dictionary[ParseAPIClient.Constants.JSONResponseKeys.CreatedAt] as! Date
-        updatedAt   = dictionary[ParseAPIClient.Constants.JSONResponseKeys.UpdatedAt] as! Date
+        uniqueKey   = dictionary[ParseAPIClient.Constants.JSONResponseKeys.UniqueKey] as? String
+        firstName   = dictionary[ParseAPIClient.Constants.JSONResponseKeys.FirstName] as? String
+        lastName    = dictionary[ParseAPIClient.Constants.JSONResponseKeys.LastName]  as? String
+        mapString   = dictionary[ParseAPIClient.Constants.JSONResponseKeys.MapString] as? String
+        mediaURL    = dictionary[ParseAPIClient.Constants.JSONResponseKeys.MediaURL]  as? String
+        latitude    = dictionary[ParseAPIClient.Constants.JSONResponseKeys.Latitude]  as? Float
+        longitude   = dictionary[ParseAPIClient.Constants.JSONResponseKeys.Longitude] as? Float
+        createdAt   = (dictionary[ParseAPIClient.Constants.JSONResponseKeys.CreatedAt] as! String).toDate()
+        updatedAt   = (dictionary[ParseAPIClient.Constants.JSONResponseKeys.UpdatedAt] as! String).toDate()
     }
     
     // Mark: - Methods
@@ -70,6 +73,7 @@ struct StudentInformation {
         
         return information
     }
+    
 }
 
 // MARK: - StudentInformation: Equatable

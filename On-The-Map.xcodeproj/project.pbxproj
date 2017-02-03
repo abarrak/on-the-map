@@ -13,6 +13,7 @@
 		B8341E541E3925CB00402193 /* UdacityAPIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8341E521E3925CB00402193 /* UdacityAPIConstants.swift */; };
 		B8341E581E3925DD00402193 /* ParseAPIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8341E561E3925DD00402193 /* ParseAPIConstants.swift */; };
 		B8341E591E3925DD00402193 /* ParseAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8341E571E3925DD00402193 /* ParseAPIClient.swift */; };
+		B8430F871E44C01B00AC69CD /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8430F861E44C01B00AC69CD /* DateExtension.swift */; };
 		B8AABE641E32C4400063BAA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AABE631E32C4400063BAA9 /* AppDelegate.swift */; };
 		B8AABE661E32C4400063BAA9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AABE651E32C4400063BAA9 /* RegistrationViewController.swift */; };
 		B8AABE691E32C4400063BAA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AABE671E32C4400063BAA9 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		B8341E521E3925CB00402193 /* UdacityAPIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityAPIConstants.swift; sourceTree = "<group>"; };
 		B8341E561E3925DD00402193 /* ParseAPIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPIConstants.swift; sourceTree = "<group>"; };
 		B8341E571E3925DD00402193 /* ParseAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPIClient.swift; sourceTree = "<group>"; };
+		B8430F861E44C01B00AC69CD /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		B8AABE601E32C4400063BAA9 /* On-The-Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On-The-Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8AABE631E32C4400063BAA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8AABE651E32C4400063BAA9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -167,7 +169,7 @@
 				B8AABE7A1E32C4400063BAA9 /* Info.plist */,
 			);
 			path = "On-The-MapTests";
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		B8AABE821E32C4400063BAA9 /* On-The-MapUITests */ = {
 			isa = PBXGroup;
@@ -184,6 +186,7 @@
 				B8AABE631E32C4400063BAA9 /* AppDelegate.swift */,
 				B8AABE921E32C6ED0063BAA9 /* GCDBlackBox.swift */,
 				B8BAC61A1E3BA1E40068A741 /* StringExtension.swift */,
+				B8430F861E44C01B00AC69CD /* DateExtension.swift */,
 				B8BAC6221E3BC9A50068A741 /* ViewControllerExtension.swift */,
 				B8AABE6A1E32C4400063BAA9 /* Assets.xcassets */,
 				B8AABE6C1E32C4400063BAA9 /* LaunchScreen.storyboard */,
@@ -386,6 +389,7 @@
 				B8BAC6231E3BC9A50068A741 /* ViewControllerExtension.swift in Sources */,
 				B8AABE641E32C4400063BAA9 /* AppDelegate.swift in Sources */,
 				B8BAC61D1E3BA4F00068A741 /* MapTabBarController.swift in Sources */,
+				B8430F871E44C01B00AC69CD /* DateExtension.swift in Sources */,
 				B8341E531E3925CB00402193 /* UdacityAPIClient.swift in Sources */,
 				B8341E541E3925CB00402193 /* UdacityAPIConstants.swift in Sources */,
 				B8BAC61B1E3BA1E40068A741 /* StringExtension.swift in Sources */,

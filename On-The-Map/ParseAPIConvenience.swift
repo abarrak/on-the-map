@@ -13,10 +13,10 @@ extension ParseAPIClient {
     // Mark: - Definitions
     
     typealias allStudentsInfoCompletionHandler =
-        (_ success: Bool, _ studentsInfo: [StudentInformation]?, _ errorString: String?) -> Void
+        (_ success: Bool, _ studentsInfoList: [StudentInformation]?, _ errorString: String?) -> Void
     
     typealias studentInfoCompletionHandler =
-        (_ success: Bool, _ studentsInfo: StudentInformation?, _ errorString: String?) -> Void
+        (_ success: Bool, _ studentInfo: StudentInformation?, _ errorString: String?) -> Void
     
     typealias studentWriteOpsCompletionHandler = (_ success: Bool, _ errorString: String?) -> Void
     
@@ -44,6 +44,7 @@ extension ParseAPIClient {
             let results = results?[Constants.JSONResponseKeys.Results] as? [[String:AnyObject]]
             
             if results != nil {
+                print(results ?? "")
                 completionHandler(true,
                                   StudentInformation.informationFromResults(results!),
                                   nil)

@@ -93,19 +93,29 @@ class MapTabBarController: UITabBarController {
             if !success {
                 performUIUpdatesOnMain({
                     self.alertMessage("Failure", message: errorMsg!)
-                    self.setUIEnabled(true)
                 })
                 return
             }
                 
             performUIUpdatesOnMain({
-                self.alertMessage("Yeah", message: (studentsInfoList?.first?.firstName)!)
+                self.studentsInfoList = studentsInfoList
             })
         }
     }
     
     private func fetchCurrentStudentData() {
-        
+        ParseAPIClient.sharedInstance().getStudentInfo(userKey: userKey!) { (success, studentInfo, errorMsg) in
+            if !success {
+                performUIUpdatesOnMain({
+                    self.alertMessage("Failure", message: errorMsg!)
+                })
+                return
+            }
+            
+            performUIUpdatesOnMain({
+                self.currentStudentInfo = studentInfo
+            })
+        }
     }
     
     // Mark: - Helpers
