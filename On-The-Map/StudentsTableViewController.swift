@@ -8,9 +8,10 @@
 
 import UIKit
 
-class StudentsTableViewController: UITableViewController {
+class StudentsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Mark: - Properties
+    @IBOutlet weak var tableView: UITableView!
     
     var studentsInfo: [StudentInformation]? {
         return (self.tabBarController as! MapTabBarController).studentsInfoList ?? nil
@@ -18,30 +19,30 @@ class StudentsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("there are \(studentsInfo?.count)")
         return studentsInfo?.count ?? 0
     }
     
     // MARK: - Table view delegate
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "studentsInfoCell",
                                                  for: indexPath)
         
         let studentInfo = studentsInfo?[indexPath.row]
+        cell.imageView?.image = UIImage(named: "PinIcon")
         cell.textLabel?.text = studentInfo?.fullName
 
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Navigate to selected student pin on the map.
     }
 }

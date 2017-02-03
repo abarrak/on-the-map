@@ -44,7 +44,6 @@ extension ParseAPIClient {
             let results = results?[Constants.JSONResponseKeys.Results] as? [[String:AnyObject]]
             
             if results != nil {
-                print(results ?? "")
                 completionHandler(true,
                                   StudentInformation.informationFromResults(results!),
                                   nil)
@@ -55,12 +54,13 @@ extension ParseAPIClient {
     }
     
     func getStudentInfo(userKey: String, completionHandler: @escaping studentInfoCompletionHandler) {
-        let parameters = [Constants.ParameterKeys.Where: "{\(Constants.ParameterKeys.UniqueKey): \(userKey)}"]
+        let parameters = [Constants.ParameterKeys.Where: "{\"\(Constants.ParameterKeys.UniqueKey)\": \"\(userKey)\"}"]
         
         let _ = genericParseTask(apiMethod: Constants.Methods.AllLocations, parameters: parameters as [String:AnyObject], httpMethod: "GET", jsonBody: nil) { (results, error) in
             
             // Did the request failed?
             if error != nil {
+                print(error!)
                 completionHandler(false, nil, "Fetching student's info failed.")
                 return
             }
@@ -72,10 +72,14 @@ extension ParseAPIClient {
             }
             
             // Extract the info dictionary data and construct Foundation object.
-            let results = results?[Constants.JSONResponseKeys.Results] as? [String:AnyObject]
+            let results = results?[Constants.JSONResponseKeys.Results] as? [[String:AnyObject]]
             
             if results != nil {
-                completionHandler(true, StudentInformation(dictionary: results!), nil)
+                if let count = results?.count, count > 0 {
+                    completionHandler(true, StudentInformation(dictionary: (results?[0])!), nil)
+                } else {
+                    completionHandler(false, nil, "No Data for you on the map yet.")
+                }
             } else {
                 completionHandler(false, nil, "Unexpected parsing error occured. \(error)")
             }
@@ -149,6 +153,5 @@ extension ParseAPIClient {
     }
     
     private func performTaskOnSingleEntry() {
-        
     }
 }

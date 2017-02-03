@@ -63,7 +63,8 @@ class MapTabBarController: UITabBarController {
     }
     
     func pin() {
-        
+        // TODO: alert if user already has a pin.
+        performSegue(withIdentifier: "infoPosting", sender: self)
     }
     
     // Mark: - Methods

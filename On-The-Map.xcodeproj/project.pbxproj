@@ -14,6 +14,8 @@
 		B8341E581E3925DD00402193 /* ParseAPIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8341E561E3925DD00402193 /* ParseAPIConstants.swift */; };
 		B8341E591E3925DD00402193 /* ParseAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8341E571E3925DD00402193 /* ParseAPIClient.swift */; };
 		B8430F871E44C01B00AC69CD /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8430F861E44C01B00AC69CD /* DateExtension.swift */; };
+		B8430F891E45205200AC69CD /* InfoPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8430F881E45205200AC69CD /* InfoPostingViewController.swift */; };
+		B8430F8B1E45207D00AC69CD /* LinkPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8430F8A1E45207D00AC69CD /* LinkPostingViewController.swift */; };
 		B8AABE641E32C4400063BAA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AABE631E32C4400063BAA9 /* AppDelegate.swift */; };
 		B8AABE661E32C4400063BAA9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AABE651E32C4400063BAA9 /* RegistrationViewController.swift */; };
 		B8AABE691E32C4400063BAA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AABE671E32C4400063BAA9 /* Main.storyboard */; };
@@ -58,6 +60,8 @@
 		B8341E561E3925DD00402193 /* ParseAPIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPIConstants.swift; sourceTree = "<group>"; };
 		B8341E571E3925DD00402193 /* ParseAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPIClient.swift; sourceTree = "<group>"; };
 		B8430F861E44C01B00AC69CD /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		B8430F881E45205200AC69CD /* InfoPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoPostingViewController.swift; sourceTree = "<group>"; };
+		B8430F8A1E45207D00AC69CD /* LinkPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkPostingViewController.swift; sourceTree = "<group>"; };
 		B8AABE601E32C4400063BAA9 /* On-The-Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On-The-Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8AABE631E32C4400063BAA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8AABE651E32C4400063BAA9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 				B8BAC61C1E3BA4F00068A741 /* MapTabBarController.swift */,
 				B8BAC61E1E3BBE640068A741 /* MapViewController.swift */,
 				B8BAC6201E3BBE930068A741 /* StudentsTableViewController.swift */,
+				B8430F881E45205200AC69CD /* InfoPostingViewController.swift */,
+				B8430F8A1E45207D00AC69CD /* LinkPostingViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -379,6 +385,7 @@
 				B8B0A5AF1E39694200E2FE20 /* UdacityAPIConvenience.swift in Sources */,
 				B8243DB41E33BCFC0078F7B6 /* LoginViewController.swift in Sources */,
 				B8AABE661E32C4400063BAA9 /* RegistrationViewController.swift in Sources */,
+				B8430F8B1E45207D00AC69CD /* LinkPostingViewController.swift in Sources */,
 				B8BAC6271E3BF8B80068A741 /* AbstractAPI.swift in Sources */,
 				B8AABE931E32C6ED0063BAA9 /* GCDBlackBox.swift in Sources */,
 				B8341E501E39257800402193 /* StudentInformation.swift in Sources */,
@@ -390,6 +397,7 @@
 				B8AABE641E32C4400063BAA9 /* AppDelegate.swift in Sources */,
 				B8BAC61D1E3BA4F00068A741 /* MapTabBarController.swift in Sources */,
 				B8430F871E44C01B00AC69CD /* DateExtension.swift in Sources */,
+				B8430F891E45205200AC69CD /* InfoPostingViewController.swift in Sources */,
 				B8341E531E3925CB00402193 /* UdacityAPIClient.swift in Sources */,
 				B8341E541E3925CB00402193 /* UdacityAPIConstants.swift in Sources */,
 				B8BAC61B1E3BA1E40068A741 /* StringExtension.swift in Sources */,
