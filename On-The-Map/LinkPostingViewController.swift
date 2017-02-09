@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class LinkPostingViewController: UIViewController {
+class LinkPostingViewController: UIViewController, UITextFieldDelegate {
 
     // Mark: - Properties
 
@@ -18,10 +18,18 @@ class LinkPostingViewController: UIViewController {
     @IBOutlet weak var pinMap: MKMapView!
     @IBOutlet weak var submitButton: UIButton!
 
+    var linkShareTextPlaceholder: String {
+        get {
+            return "Enter a link to share here"
+        }
+    }
+
     // Mark: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        linkShareText.delegate = self
     }
     
     // Mark: - Actions
@@ -35,4 +43,11 @@ class LinkPostingViewController: UIViewController {
     }
     
     // Mark: - Methods
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if linkShareText.text! == linkShareTextPlaceholder {
+            linkShareText.text = ""
+        }
+    }
+    
 }

@@ -8,20 +8,27 @@
 
 import UIKit
 
-class InfoPostingViewController: UIViewController {
+class InfoPostingViewController: UIViewController, UITextFieldDelegate {
 
     // Mark: - Properties
 
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var locationText: UITextField!
     @IBOutlet weak var findButton: UIButton!
-
+    
+    var locationTextPlaceholder: String {
+        get {
+            return "Enter your location here"
+        }
+    }
+    
     // Mark: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationText.delegate = self
     }
-
     // Mark: - Actions
 
     @IBAction func cancel(_ sender: UIButton) {
@@ -29,8 +36,30 @@ class InfoPostingViewController: UIViewController {
     }
     
     @IBAction func findOnMap(_ sender: UIButton) {
-        performSegue(withIdentifier: "linkPosting", sender: self)
+        // Skip if text is empty.
+        if (locationText.text?.isBlank())! {
+            return
+        }
+        
+        if isLocationFound() {
+            performSegue(withIdentifier: "linkPosting", sender: self)
+        } else {
+            alertMessage("Not Found", message: "Your location could not be found on the map.")
+        }
     }
     
     // Mark: - Methods
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if locationText.text! == locationTextPlaceholder {
+            locationText.text = ""
+        }
+    }
+    
+    private func isLocationFound() -> Bool {
+        return true
+    }
+    
+    private func geocodeLocation() {
+    }
 }
