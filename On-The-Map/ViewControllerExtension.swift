@@ -10,7 +10,7 @@ import UIKit
 
 extension UIViewController {
     func alertMessage(_ title: String, message: String) {
-        let alert = UIAlertController(title: title,message: message,
+        let alert = UIAlertController(title: title, message: message,
                                       preferredStyle: UIAlertControllerStyle.alert)
         
         let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.default) {
@@ -18,6 +18,19 @@ extension UIViewController {
         }
         
         alert.addAction(okAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func alertQuestion(_ title: String, message: String, okHandler: @escaping (_ action: UIAlertAction?) -> Void) {
+        let alert = UIAlertController(title: title, message:message,
+                                      preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: okHandler))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            self.dismiss(animated: true, completion: nil)
+        }))
         
         present(alert, animated: true, completion: nil)
     }

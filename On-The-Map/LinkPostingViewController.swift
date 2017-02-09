@@ -40,6 +40,7 @@ class LinkPostingViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func submit(_ sender: UIButton) {
+        
     }
     
     // Mark: - Methods

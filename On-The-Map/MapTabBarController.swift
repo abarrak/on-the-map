@@ -62,8 +62,13 @@ class MapTabBarController: UITabBarController {
     }
     
     func pin() {
-        // TODO: alert if user already has a pin.
-        performSegue(withIdentifier: "infoPosting", sender: self)
+        if currentStudentInfo == nil {
+            performSegue(withIdentifier: "infoPosting", sender: self)
+        } else {
+            alertQuestion("Pin Exists", message: "Your pin is already there. Overwrite?") { (action) in
+                self.performSegue(withIdentifier: "infoPosting", sender: self)
+            }
+        }
     }
     
     // Mark: - Methods
