@@ -27,8 +27,7 @@ class MapTabBarController: UITabBarController {
         super.viewDidLoad()
         
         setupTopBar()
-        fetchAllStudentsData()
-        fetchCurrentStudentData()
+        fetch()
     }
     
     // Mark: - Actions
@@ -59,7 +58,7 @@ class MapTabBarController: UITabBarController {
     }
     
     func refersh() {
-        
+        fetch()
     }
     
     func pin() {
@@ -87,6 +86,11 @@ class MapTabBarController: UITabBarController {
     
     private func setUIEnabled(_ enabled: Bool) {
         logoutButton?.isEnabled = enabled
+    }
+    
+    private func fetch() {
+        fetchAllStudentsData()
+        fetchCurrentStudentData()
     }
     
     private func fetchAllStudentsData() {
