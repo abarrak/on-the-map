@@ -82,11 +82,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func addAnnotationToMap(_ studentInfo: StudentInformation) {
-//        if studentInfo.fullName != "None" {
-//            if mapView.annotations.contains(where: { $0.title! == studentInfo.fullName }) {
-//               mapView.removeAnnotation(mapView.removeAnnotation())
-//            }
-//        }
         let _ = constructAnnotation(studentInfo: studentInfo)
     }
     

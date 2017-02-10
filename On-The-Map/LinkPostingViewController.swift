@@ -86,7 +86,7 @@ class LinkPostingViewController: UIViewController, UITextFieldDelegate {
     private func updatePin() {
         // Reflect new changes ..
         currentStudentInfo?.mediaURL = linkShareText?.text
-        currentStudentInfo?.longitude = Float((self.geocodedLocation?.latitude)!)
+        currentStudentInfo?.latitude = Float((self.geocodedLocation?.latitude)!)
         currentStudentInfo?.longitude = Float((self.geocodedLocation?.longitude)!)
         currentStudentInfo?.mapString =  locationString
         
@@ -107,6 +107,7 @@ class LinkPostingViewController: UIViewController, UITextFieldDelegate {
     
     private func constructStudentInfoThenAddIt() {
         // Grap the profile from Udacity ..
+        
         UdacityAPIClient.sharedInstance().getProfile(userKey: userKey!) {
             (success, firstName, lastName, errorString) in
             if !success {
@@ -117,10 +118,7 @@ class LinkPostingViewController: UIViewController, UITextFieldDelegate {
                 performUIUpdatesOnMain({
                     self.firstName = firstName!
                     self.lastName = lastName!
-                    print(self.userKey!)
-                    print(String(Float((self.geocodedLocation?.latitude)!)) + "Yeah")
-                    print(String(Float((self.geocodedLocation?.longitude)!)) + "Yeah")
-                    
+
                     // If data obtained successfully, build the object and post to Parse..
                     
                     let studentInfo = StudentInformation(uniqueKey: self.userKey,
