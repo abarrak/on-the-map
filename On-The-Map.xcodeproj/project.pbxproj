@@ -221,10 +221,10 @@
 		B8AABE961E32C72E0063BAA9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B8AABE651E32C4400063BAA9 /* RegistrationViewController.swift */,
 				B8243DB31E33BCFC0078F7B6 /* LoginViewController.swift */,
-				B8BAC61E1E3BBE640068A741 /* MapViewController.swift */,
+				B8AABE651E32C4400063BAA9 /* RegistrationViewController.swift */,
 				B8BAC61C1E3BA4F00068A741 /* MapTabBarController.swift */,
+				B8BAC61E1E3BBE640068A741 /* MapViewController.swift */,
 				B8BAC6201E3BBE930068A741 /* StudentsTableViewController.swift */,
 				B8430F881E45205200AC69CD /* InfoPostingViewController.swift */,
 				B8430F8A1E45207D00AC69CD /* LinkPostingViewController.swift */,

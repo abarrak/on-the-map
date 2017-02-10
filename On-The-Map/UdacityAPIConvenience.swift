@@ -96,9 +96,7 @@ extension UdacityAPIClient {
     }
     
     
-    func getProfile(userKey: String,
-                    completionHandler: @escaping getProfileCompletionHandler) {
-        
+    func getProfile(userKey: String, completionHandler: @escaping getProfileCompletionHandler) {
         let _ = taskForRetrieval(userKey: userKey) { (results, error) in
             if error != nil {
                 completionHandler(false, nil, nil, "Fetching user info failed.")
@@ -127,13 +125,17 @@ extension UdacityAPIClient {
             if firstName != nil && lastName != nil {
                 completionHandler(true, firstName, lastName, nil)
             } else {
-                // New udacity api does not return your first and last name even if they are set.
-                // Which is frustrating and absurd :(
-                completionHandler(true, nickname, nickname, nil)
-                // completionHandler(false, nil, nil, "Unexpected parsing error occured. \(error)")
+                
+                // Humm ~ New udacity api does not return your first and last name even if they 
+                // are set in Postman, but in iOS sim. they came magically ! 
+                // nick name is just an ensurance.
+                if nickname != nil {
+                    completionHandler(true, nickname, nickname, nil)
+                } else {
+                    completionHandler(false, nil, nil, "Unexpected parsing error occured. \(error)")
+                }
             }
         }
-
     }
     
     // Mark: - Helpers
