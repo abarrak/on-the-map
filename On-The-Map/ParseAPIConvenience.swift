@@ -149,9 +149,9 @@ extension ParseAPIClient {
     // Mark: - Heplers
     
     private func studentLocationRequestPayload(studentInfo: StudentInformation) -> String {
-        return ""
-    }
-    
-    private func performTaskOnSingleEntry() {
+        return  "{\"uniqueKey\": \"\(studentInfo.uniqueKey)\", \"firstName\": \"\(studentInfo.firstName)\"," +
+                "\"lastName\": \"\(studentInfo.lastName)\",\"mapString\": \"\(studentInfo.mapString)\"," +
+                "\"mediaURL\": \"\(studentInfo.mediaURL)\",\"latitude\": \(studentInfo.latitude)," +
+                "\"longitude\": \(studentInfo.longitude)}"
     }
 }

@@ -22,6 +22,8 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    var currentStudentInfo: StudentInformation?
+    
     // Mark: - Life Cycle
 
     override func viewDidLoad() {
@@ -36,7 +38,7 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func findOnMap(_ sender: UIButton) {
-        // Skip if text is empty.
+        // Skip if location text is empty.
         if (locationText.text?.isBlank())! {
             return
         }
@@ -45,6 +47,13 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
             performSegue(withIdentifier: "linkPosting", sender: self)
         } else {
             alertMessage("Not Found", message: "Your location could not be found on the map.")
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "linkPosting" {
+            let linkPostingVC = segue.destination as! LinkPostingViewController
+            linkPostingVC.currentStudentInfo = currentStudentInfo
         }
     }
     

@@ -19,7 +19,10 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.reloadData()
+        
+        performUIUpdatesOnMain {
+            self.tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source

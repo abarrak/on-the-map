@@ -71,6 +71,13 @@ class MapTabBarController: UITabBarController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "infoPosting" {
+            let infoPostingVC = segue.destination as! InfoPostingViewController
+            infoPostingVC.currentStudentInfo = currentStudentInfo
+        }
+    }
+    
     // Mark: - Methods
     
     private func setupTopBar() {
