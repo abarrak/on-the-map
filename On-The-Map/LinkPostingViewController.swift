@@ -94,6 +94,13 @@ class LinkPostingViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func updatePin() {
+        // Reflect new changes ..
+        currentStudentInfo?.mediaURL = linkShareText?.text
+        currentStudentInfo?.longitude = Float((self.geocodedLocation?.latitude)!)
+        currentStudentInfo?.longitude = Float((self.geocodedLocation?.latitude)!)
+        currentStudentInfo?.mapString =  locationString
+        
+        // Communicate them with Parse ..
         ParseAPIClient.sharedInstance().updateStudentInfo(studentInfo: currentStudentInfo!) {
             (success, errorMsg) in
             if !success {

@@ -13,28 +13,28 @@ struct StudentInformation {
     // Mark: - Properties
     
     // Parse auto-generated id which uniquely identifies a StudentLocation.
-    let objectId: String
+    var objectId: String
     
     // An extra (optional) key used to uniquely identify a StudentLocation.
     // Should be populated this value using your Udacity account id
-    let uniqueKey: String?
+    var uniqueKey: String?
 
-    let firstName: String?
-    let lastName: String?
+    var firstName: String?
+    var lastName: String?
 
     // The location string used for geocoding the student location.
-    let mapString: String?
+    var mapString: String?
     
     // The URL provided by the student.
-    let mediaURL: String?
+    var mediaURL: String?
     
     // The latitude of the student location (ranges from -90 to 90).
-    let latitude: Float?
+    var latitude: Float?
     // The longitude of the student location (ranges from -180 to 180).
-    let longitude: Float?
+    var longitude: Float?
 
-    let createdAt: Date?
-    let updatedAt: Date?
+    var createdAt: Date?
+    var updatedAt: Date?
     
     var fullName: String {
         if let firstName = firstName, let lastName = lastName {
