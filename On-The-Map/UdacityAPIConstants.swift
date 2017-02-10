@@ -20,7 +20,7 @@ extension UdacityAPIClient {
         // MARK: API HTTP Method
         struct Methods {
             static let Session = "session"
-            static let Users = "users/{user_id}"
+            static let Users = "users"
         }
         
         // MARK: Parameter Keys
@@ -51,6 +51,7 @@ extension UdacityAPIClient {
             static let User = "user"
             static let FirstName = "first_name"
             static let LastName = "last_name"
+            static let Nickname = "nickname"
         }
     }
 }

@@ -106,11 +106,10 @@ extension ParseAPIClient {
             // Extract success indicator data.
             let createdAt = results?[Constants.JSONResponseKeys.CreatedAt] as? String
             let objectId = results?[Constants.JSONResponseKeys.ObjectId] as?  String
-            
             if createdAt != nil && objectId != nil {
                 completionHandler(true, nil)
             } else {
-                completionHandler(false, "Unexpected parsing error occured. \(error)")
+                completionHandler(false, "[PARSE] Unexpected parsing error occured. \(error)")
             }
             
         }
@@ -149,9 +148,6 @@ extension ParseAPIClient {
     // Mark: - Heplers
     
     private func studentLocationRequestPayload(studentInfo: StudentInformation) -> String {
-        return  "{\"uniqueKey\": \"\(studentInfo.uniqueKey)\", \"firstName\": \"\(studentInfo.firstName)\"," +
-                "\"lastName\": \"\(studentInfo.lastName)\",\"mapString\": \"\(studentInfo.mapString)\"," +
-                "\"mediaURL\": \"\(studentInfo.mediaURL)\",\"latitude\": \(studentInfo.latitude)," +
-                "\"longitude\": \(studentInfo.longitude)}"
+        return  "{ \"uniqueKey\": \"\(studentInfo.uniqueKey!)\", \"firstName\": \"\(studentInfo.firstName!)\",  \"lastName\": \"\(studentInfo.lastName!)\", \"mapString\": \"\(studentInfo.mapString!)\", \"mediaURL\": \"\(studentInfo.mediaURL!)\", \"latitude\": \(studentInfo.latitude!), \"longitude\": \(studentInfo.longitude!)}"
     }
 }

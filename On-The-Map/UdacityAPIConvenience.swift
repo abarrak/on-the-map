@@ -107,7 +107,7 @@ extension UdacityAPIClient {
             
             // Were there any 4xx errors ?
             if let error = results?[Constants.JSONResponseKeys.Error] {
-                completionHandler(false, nil, nil, "Encountered error while fetching user date: \(error).")
+                completionHandler(false, nil, nil, "Error encountered while fetching user date: \(error).")
                 return
             }
             
@@ -115,18 +115,22 @@ extension UdacityAPIClient {
             let userDict = results?[Constants.JSONResponseKeys.User] as? [String:Any?]
             
             if userDict == nil {
-                completionHandler(false, nil, nil, "Unexpected parsing error occured. \(error)")
+                completionHandler(false, nil, nil, "[Udacity] Unexpected parsing error occured. \(error)")
                 return
             }
             
             // Extract lovely names ..
             let firstName = userDict?[Constants.JSONResponseKeys.FirstName] as? String
             let lastName = userDict?[Constants.JSONResponseKeys.LastName] as? String
+            let nickname = userDict?[Constants.JSONResponseKeys.Nickname] as? String
             
             if firstName != nil && lastName != nil {
                 completionHandler(true, firstName, lastName, nil)
             } else {
-                completionHandler(false, nil, nil, "Unexpected parsing error occured. \(error)")
+                // New udacity api does not return your first and last name even if they are set.
+                // Which is frustrating and absurd :(
+                completionHandler(true, nickname, nickname, nil)
+                // completionHandler(false, nil, nil, "Unexpected parsing error occured. \(error)")
             }
         }
 

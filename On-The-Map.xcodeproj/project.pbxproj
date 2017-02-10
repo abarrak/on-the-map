@@ -25,6 +25,7 @@
 		B8AABE841E32C4400063BAA9 /* On_The_MapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AABE831E32C4400063BAA9 /* On_The_MapUITests.swift */; };
 		B8AABE931E32C6ED0063BAA9 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AABE921E32C6ED0063BAA9 /* GCDBlackBox.swift */; };
 		B8B0A5AF1E39694200E2FE20 /* UdacityAPIConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B0A5AE1E39694200E2FE20 /* UdacityAPIConvenience.swift */; };
+		B8B957191E4DDC750019F7CD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B957181E4DDC750019F7CD /* CoreLocation.framework */; };
 		B8BAC61B1E3BA1E40068A741 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAC61A1E3BA1E40068A741 /* StringExtension.swift */; };
 		B8BAC61D1E3BA4F00068A741 /* MapTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAC61C1E3BA4F00068A741 /* MapTabBarController.swift */; };
 		B8BAC61F1E3BBE640068A741 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAC61E1E3BBE640068A741 /* MapViewController.swift */; };
@@ -77,6 +78,7 @@
 		B8AABE851E32C4400063BAA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8AABE921E32C6ED0063BAA9 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		B8B0A5AE1E39694200E2FE20 /* UdacityAPIConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityAPIConvenience.swift; sourceTree = "<group>"; };
+		B8B957181E4DDC750019F7CD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B8BAC61A1E3BA1E40068A741 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		B8BAC61C1E3BA4F00068A741 /* MapTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTabBarController.swift; sourceTree = "<group>"; };
 		B8BAC61E1E3BBE640068A741 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8B957191E4DDC750019F7CD /* CoreLocation.framework in Frameworks */,
 				B8D3D1B01E3D207A00CC2493 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,8 +223,8 @@
 			children = (
 				B8AABE651E32C4400063BAA9 /* RegistrationViewController.swift */,
 				B8243DB31E33BCFC0078F7B6 /* LoginViewController.swift */,
-				B8BAC61C1E3BA4F00068A741 /* MapTabBarController.swift */,
 				B8BAC61E1E3BBE640068A741 /* MapViewController.swift */,
+				B8BAC61C1E3BA4F00068A741 /* MapTabBarController.swift */,
 				B8BAC6201E3BBE930068A741 /* StudentsTableViewController.swift */,
 				B8430F881E45205200AC69CD /* InfoPostingViewController.swift */,
 				B8430F8A1E45207D00AC69CD /* LinkPostingViewController.swift */,
@@ -242,6 +245,7 @@
 		B8D3D1AE1E3D207A00CC2493 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B8B957181E4DDC750019F7CD /* CoreLocation.framework */,
 				B8D3D1AF1E3D207A00CC2493 /* MapKit.framework */,
 			);
 			name = Frameworks;

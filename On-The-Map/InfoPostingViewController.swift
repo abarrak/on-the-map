@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class InfoPostingViewController: UIViewController, UITextFieldDelegate {
 
@@ -22,7 +23,10 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    var userKey: String? = nil
+    
     var currentStudentInfo: StudentInformation?
+    var geocodedLocation: CLLocationCoordinate2D?
     
     // Mark: - Life Cycle
 
@@ -39,21 +43,20 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func findOnMap(_ sender: UIButton) {
         // Skip if location text is empty.
-        if (locationText.text?.isBlank())! {
+        if (locationText.text?.isBlank())! || locationText.text! == locationTextPlaceholder {
             return
         }
         
-        if isLocationFound() {
-            performSegue(withIdentifier: "linkPosting", sender: self)
-        } else {
-            alertMessage("Not Found", message: "Your location could not be found on the map.")
-        }
+        geocodeThenProceed()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "linkPosting" {
             let linkPostingVC = segue.destination as! LinkPostingViewController
             linkPostingVC.currentStudentInfo = currentStudentInfo
+            linkPostingVC.geocodedLocation = geocodedLocation
+            linkPostingVC.userKey = userKey
+            linkPostingVC.locationString = locationText.text!
         }
     }
     
@@ -64,11 +67,20 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
             locationText.text = ""
         }
     }
-    
-    private func isLocationFound() -> Bool {
-        return true
-    }
-    
-    private func geocodeLocation() {
+
+    private func geocodeThenProceed() {
+        let geocoder = CLGeocoder()
+        
+        geocoder.geocodeAddressString(locationText.text!) { (placemarks, error) in
+            if error != nil {
+                // self.alertMessage("Error", message: error.localizedDescription)
+                self.alertMessage("Not Found", message: "Your location could not be found on the map.")
+            }
+            
+            if let placemark = placemarks?.first {
+                self.geocodedLocation = placemark.location!.coordinate
+                self.performSegue(withIdentifier: "linkPosting", sender: self)
+            }
+        }
     }
 }

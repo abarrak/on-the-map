@@ -25,9 +25,12 @@ class MapTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTopBar()
-        fetch()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        refersh()
     }
     
     // Mark: - Actions
@@ -75,6 +78,7 @@ class MapTabBarController: UITabBarController {
         if segue.identifier == "infoPosting" {
             let infoPostingVC = segue.destination as! InfoPostingViewController
             infoPostingVC.currentStudentInfo = currentStudentInfo
+            infoPostingVC.userKey = userKey
         }
     }
     

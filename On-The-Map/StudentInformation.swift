@@ -30,7 +30,6 @@ struct StudentInformation {
     
     // The latitude of the student location (ranges from -90 to 90).
     let latitude: Float?
-    
     // The longitude of the student location (ranges from -180 to 180).
     let longitude: Float?
 
@@ -48,7 +47,20 @@ struct StudentInformation {
     //   let ACL: PFACL
 
     // Mark: - Initializers
-
+    
+    init(uniqueKey: String?, firstName: String?, lastName: String?, mapString: String?, mediaURL: String?, latitude: Float?, longitude: Float?) {
+        self.objectId = ""
+        self.uniqueKey = uniqueKey
+        self.firstName = firstName
+        self.lastName = lastName
+        self.mapString = mapString
+        self.mediaURL = mediaURL
+        self.latitude = latitude
+        self.longitude = longitude
+        self.createdAt = nil
+        self.updatedAt = nil
+    }
+    
     init(dictionary: [String : AnyObject]) {
         objectId    = dictionary[ParseAPIClient.Constants.JSONResponseKeys.ObjectId]  as! String
         uniqueKey   = dictionary[ParseAPIClient.Constants.JSONResponseKeys.UniqueKey] as? String
