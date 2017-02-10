@@ -71,7 +71,7 @@ class LinkPostingViewController: UIViewController, UITextFieldDelegate {
     }
     
     func discard() {
-        self.presentingViewController!.presentingViewController!.dismiss(animated: true, completion: nil)
+        presentingViewController!.presentingViewController!.dismiss(animated: true, completion: nil)
     }
     
     private func sendNewPinInfoThenDiscard() {

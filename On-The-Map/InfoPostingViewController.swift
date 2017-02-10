@@ -16,6 +16,7 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var locationText: UITextField!
     @IBOutlet weak var findButton: UIButton!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var locationTextPlaceholder: String {
         get {
@@ -34,14 +35,17 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         locationText.delegate = self
+        spinner.isHidden = true
     }
     // Mark: - Actions
 
     @IBAction func cancel(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func findOnMap(_ sender: UIButton) {
+        setUIEnabled(false)
+        
         // Skip if location text is empty.
         if (locationText.text?.isBlank())! || locationText.text! == locationTextPlaceholder {
             return
@@ -69,8 +73,6 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
     }
 
     private func geocodeThenProceed() {
-        setUIEnabled(false)
-        
         let geocoder = CLGeocoder()
         
         geocoder.geocodeAddressString(locationText.text!) { (placemarks, error) in
@@ -83,11 +85,12 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
                 self.geocodedLocation = placemark.location!.coordinate
                 self.performSegue(withIdentifier: "linkPosting", sender: self)
             }
-            self.setUIEnabled(true)
+            performUIUpdatesOnMain { self.setUIEnabled(true) }
         }
     }
 
     func setUIEnabled(_ enabled: Bool) {
+        spinner.isHidden = !enabled
         findButton.isEnabled = enabled
     }
 }

@@ -208,7 +208,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="NdB-6u-ARe">
-                                <rect key="frame" x="0.0" y="60" width="414" height="314"/>
+                                <rect key="frame" x="0.0" y="60" width="414" height="340"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PeF-ha-D0E">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -251,11 +251,11 @@
                                             <constraint firstAttribute="height" constant="100" id="tkZ-0O-rnh"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dvs-9m-rVK">
-                                        <rect key="frame" x="0.0" y="280" width="414" height="34"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="dvs-9m-rVK">
+                                        <rect key="frame" x="0.0" y="280" width="414" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSI-WJ-bls">
-                                                <rect key="frame" x="107" y="0.0" width="200" height="34"/>
+                                                <rect key="frame" x="107" y="0.0" width="200" height="31"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="umz-AK-Lyn"/>
@@ -268,9 +268,12 @@
                                                     <action selector="findOnMap:" destination="fdH-uS-n2w" eventType="touchUpInside" id="qZn-Kv-iPF"/>
                                                 </connections>
                                             </button>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="rDr-eu-rJf">
+                                                <rect key="frame" x="197" y="43" width="20" height="17"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="45" id="qgN-Jq-9Wa"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="qgN-Jq-9Wa"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -290,6 +293,7 @@
                         <outlet property="cancelButton" destination="TTL-Th-5KI" id="oUg-Y9-NC2"/>
                         <outlet property="findButton" destination="dSI-WJ-bls" id="qls-Q1-EP3"/>
                         <outlet property="locationText" destination="lVa-vw-qpe" id="mXA-ZF-orM"/>
+                        <outlet property="spinner" destination="rDr-eu-rJf" id="3O6-T7-Wjj"/>
                         <segue destination="d9i-Sw-8xI" kind="presentation" identifier="linkPosting" id="U44-bm-76f"/>
                     </connections>
                 </viewController>

@@ -33,6 +33,7 @@
 		B8BAC6231E3BC9A50068A741 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAC6221E3BC9A50068A741 /* ViewControllerExtension.swift */; };
 		B8BAC6251E3BE3920068A741 /* ParseAPIConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAC6241E3BE3920068A741 /* ParseAPIConvenience.swift */; };
 		B8BAC6271E3BF8B80068A741 /* AbstractAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BAC6261E3BF8B80068A741 /* AbstractAPI.swift */; };
+		B8CDE27B1E4E7F910032B6D7 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CDE27A1E4E7F910032B6D7 /* Reachability.swift */; };
 		B8D3D1B01E3D207A00CC2493 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D3D1AF1E3D207A00CC2493 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,7 @@
 		B8BAC6221E3BC9A50068A741 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		B8BAC6241E3BE3920068A741 /* ParseAPIConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAPIConvenience.swift; sourceTree = "<group>"; };
 		B8BAC6261E3BF8B80068A741 /* AbstractAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractAPI.swift; sourceTree = "<group>"; };
+		B8CDE27A1E4E7F910032B6D7 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		B8D3D1AF1E3D207A00CC2493 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -195,6 +197,7 @@
 				B8BAC61A1E3BA1E40068A741 /* StringExtension.swift */,
 				B8430F861E44C01B00AC69CD /* DateExtension.swift */,
 				B8BAC6221E3BC9A50068A741 /* ViewControllerExtension.swift */,
+				B8CDE27A1E4E7F910032B6D7 /* Reachability.swift */,
 				B8AABE6A1E32C4400063BAA9 /* Assets.xcassets */,
 				B8AABE6C1E32C4400063BAA9 /* LaunchScreen.storyboard */,
 				B8AABE6F1E32C4400063BAA9 /* Info.plist */,
@@ -400,6 +403,7 @@
 				B8BAC6231E3BC9A50068A741 /* ViewControllerExtension.swift in Sources */,
 				B8AABE641E32C4400063BAA9 /* AppDelegate.swift in Sources */,
 				B8BAC61D1E3BA4F00068A741 /* MapTabBarController.swift in Sources */,
+				B8CDE27B1E4E7F910032B6D7 /* Reachability.swift in Sources */,
 				B8430F871E44C01B00AC69CD /* DateExtension.swift in Sources */,
 				B8430F891E45205200AC69CD /* InfoPostingViewController.swift in Sources */,
 				B8341E531E3925CB00402193 /* UdacityAPIClient.swift in Sources */,
