@@ -133,7 +133,7 @@ extension ParseAPIClient {
                 return
             }
 
-            // Extract success indicator data.
+            // Extract success indicator data
             let results = results?[Constants.JSONResponseKeys.UpdatedAt] as? String
             
             if results != nil {

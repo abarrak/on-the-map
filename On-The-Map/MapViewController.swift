@@ -46,6 +46,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             pinView!.canShowCallout = true
             pinView!.pinTintColor = .red
             pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            // pinView!.animatesDrop = true
         }
         else {
             pinView!.annotation = annotation
@@ -54,7 +55,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return pinView
     }
     
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
+                 calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.shared
             if let toOpen = view.annotation?.subtitle! {
