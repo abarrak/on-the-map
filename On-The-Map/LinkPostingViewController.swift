@@ -40,10 +40,10 @@ class LinkPostingViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         linkShareText.delegate = self
+        zoomToLocation()
     }
     
     // Mark: - Actions
-    
     
     @IBAction func cancel(_ sender: UIButton) {
         discard()
@@ -148,6 +148,20 @@ class LinkPostingViewController: UIViewController, UITextFieldDelegate {
                 })
             }
         }
+    }
+    
+    func zoomToLocation() {
+        let lat = geocodedLocation?.latitude
+        let long = geocodedLocation?.longitude
+        
+        let latDelta: CLLocationDegrees = 0.05
+        let longDelta: CLLocationDegrees = 0.05
+        
+        let span = MKCoordinateSpanMake(latDelta, longDelta)
+        let location = CLLocationCoordinate2DMake(lat!, long!)
+        let region = MKCoordinateRegionMake(location, span)
+        
+        pinMap.setRegion(region, animated: true)
     }
 
     // Mark: - Helpers
