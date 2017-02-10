@@ -147,11 +147,11 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Ot-tV-pNQ" id="SJM-ua-T9Y">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ozw-rJ-X4o">
-                                                    <rect key="frame" x="15" y="0.0" width="384" height="43.666666666666664"/>
+                                                    <rect key="frame" x="15" y="0.0" width="384" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -300,7 +300,7 @@
         <!--Map View-->
         <scene sceneID="F1J-0o-vUJ">
             <objects>
-                <viewController title="On The Map" id="eoD-8h-TVd" userLabel="Map View" sceneMemberID="viewController">
+                <viewController title="On The Map" id="eoD-8h-TVd" userLabel="Map View" customClass="MapViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qFu-nN-sab"/>
                         <viewControllerLayoutGuide type="bottom" id="fgz-Ql-Egb"/>
@@ -324,6 +324,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="MapSelectedIcon" selectedImage="MapDeselectedIcon" id="Kf8-Ip-HGr"/>
+                    <connections>
+                        <outlet property="mapView" destination="W5p-CM-nJA" id="r5k-gj-1BO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BZ7-nd-5Ry" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

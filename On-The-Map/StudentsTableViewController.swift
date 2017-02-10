@@ -11,6 +11,7 @@ import UIKit
 class StudentsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Mark: - Properties
+
     @IBOutlet weak var tableView: UITableView!
     
     var studentsInfo: [StudentInformation]? {
@@ -29,7 +30,6 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Table view data source
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("there are \(studentsInfo?.count)")
         return studentsInfo?.count ?? 0
     }
     
@@ -41,7 +41,7 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
         
         let studentInfo = studentsInfo?[indexPath.row]
         cell.imageView?.image = UIImage(named: "PinIcon")
-        cell.textLabel?.text = studentInfo?.fullName
+        cell.textLabel?.text = studentInfo?.fullName ?? "None"
 
         return cell
     }

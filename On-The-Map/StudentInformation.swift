@@ -40,7 +40,7 @@ struct StudentInformation {
         if let firstName = firstName, let lastName = lastName {
             return firstName + " " + lastName
         }
-        return ""
+        return "None"
     }
     
     // Parse access and control list (ACL), i.e. permissions, for this StudentLocation entry.

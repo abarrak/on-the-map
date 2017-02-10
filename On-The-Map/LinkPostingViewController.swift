@@ -75,18 +75,8 @@ class LinkPostingViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func sendNewPinInfoThenDiscard() {
+        setUIEnabled(false)
         currentStudentInfo == nil ? addPin() : updatePin()
-    }
-    
-    // Mark: - Helpers
-    
-    private func isLinkValid(link: String?) -> Bool {
-        if let urlString = link {
-            if let url = URL(string: urlString) {
-                return UIApplication.shared.canOpenURL(url)
-            }
-        }
-        return false
     }
     
     private func addPin() {
@@ -97,7 +87,7 @@ class LinkPostingViewController: UIViewController, UITextFieldDelegate {
         // Reflect new changes ..
         currentStudentInfo?.mediaURL = linkShareText?.text
         currentStudentInfo?.longitude = Float((self.geocodedLocation?.latitude)!)
-        currentStudentInfo?.longitude = Float((self.geocodedLocation?.latitude)!)
+        currentStudentInfo?.longitude = Float((self.geocodedLocation?.longitude)!)
         currentStudentInfo?.mapString =  locationString
         
         // Communicate them with Parse ..
@@ -105,19 +95,17 @@ class LinkPostingViewController: UIViewController, UITextFieldDelegate {
             (success, errorMsg) in
             if !success {
                 performUIUpdatesOnMain({
-                    self.alertMessage("Error", message: errorMsg!)
+                    self.alertThenExit("Error", message: errorMsg!)
                 })
             } else {
                 performUIUpdatesOnMain({
-                    self.alertMessage("Success", message: "You pin has been updated successfully !")
+                    self.alertThenExit("Success", message: "You pin has been updated successfully !")
                 })
             }
-            performUIUpdatesOnMain({ self.discard() })
         }
     }
     
     private func constructStudentInfoThenAddIt() {
-
         // Grap the profile from Udacity ..
         UdacityAPIClient.sharedInstance().getProfile(userKey: userKey!) {
             (success, firstName, lastName, errorString) in
@@ -131,7 +119,7 @@ class LinkPostingViewController: UIViewController, UITextFieldDelegate {
                     self.lastName = lastName!
                     print(self.userKey!)
                     print(String(Float((self.geocodedLocation?.latitude)!)) + "Yeah")
-                    print(String(Float((self.geocodedLocation?.latitude)!)) + "Yeah")
+                    print(String(Float((self.geocodedLocation?.longitude)!)) + "Yeah")
                     
                     // If data obtained successfully, build the object and post to Parse..
                     
@@ -141,24 +129,44 @@ class LinkPostingViewController: UIViewController, UITextFieldDelegate {
                                                          mapString: self.locationString,
                                                          mediaURL: self.linkShareText.text!,
                                                          latitude: Float((self.geocodedLocation?.latitude)!),
-                                                         longitude: Float((self.geocodedLocation?.latitude)!))
+                                                         longitude: Float((self.geocodedLocation?.longitude)!))
 
                     ParseAPIClient.sharedInstance().addStudentInfo(studentInfo: studentInfo) {
                         (success, errorMsg) in
                         if !success {
                             performUIUpdatesOnMain({
-                                self.alertMessage("Error", message: errorMsg!)
+                                self.alertThenExit("Error", message: errorMsg!)
                             })
+                            
                         } else {
                             performUIUpdatesOnMain({
-                                self.alertMessage("Success", message: "You pin has been posted successfully !")
+                                self.alertThenExit("Success", message: "You pin has been posted successfully !")
+                                                 
                             })
                         }
-                        
-                        performUIUpdatesOnMain({ self.discard() })
                     }
                 })
             }
         }
+    }
+
+    // Mark: - Helpers
+    
+    func setUIEnabled(_ enabled: Bool) {
+        submitButton.isEnabled = enabled
+    }
+    
+    private func isLinkValid(link: String?) -> Bool {
+        if let urlString = link {
+            if let url = URL(string: urlString) {
+                return UIApplication.shared.canOpenURL(url)
+            }
+        }
+        return false
+    }
+    
+    func alertThenExit(_ title: String, message: String) {
+        setUIEnabled(true)
+        alertMessage(title, message: message, completionHandler: { (action) in self.discard() })
     }
 }

@@ -28,8 +28,8 @@ class MapTabBarController: UITabBarController {
         setupTopBar()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         refersh()
     }
     
@@ -120,6 +120,7 @@ class MapTabBarController: UITabBarController {
                 
             performUIUpdatesOnMain({
                 self.studentsInfoList = studentsInfoList
+                self.refreshMap()
             })
         }
     }
@@ -135,9 +136,22 @@ class MapTabBarController: UITabBarController {
             
             performUIUpdatesOnMain({
                 self.currentStudentInfo = studentInfo
+                self.addToMap(self.currentStudentInfo!)
             })
         }
     }
     
     // Mark: - Helpers
+    
+    private func refreshMap() {
+        getMapVC().constructAllAnnotations()
+    }
+    
+    private func addToMap(_ studentInfo: StudentInformation) {
+        getMapVC().addAnnotationToMap( studentInfo)
+    }
+    
+    private func getMapVC() -> MapViewController {
+        return self.childViewControllers[0] as! MapViewController
+    }
 }

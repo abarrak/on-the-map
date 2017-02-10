@@ -9,19 +9,23 @@
 import UIKit
 
 extension UIViewController {
-    func alertMessage(_ title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message,
+    // Utility for informational alert
+    func alertMessage(_ title: String, message: String, completionHandler: ((UIAlertAction) -> Void)? = nil) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
                                       preferredStyle: UIAlertControllerStyle.alert)
         
-        let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.default) {
-            action in self.dismiss(animated: true, completion: nil)
-        }
+        let handler = completionHandler ?? { action in self.dismiss(animated: true, completion: nil) }        
+        let okAction = UIAlertAction(title: "OK",
+                                     style: UIAlertActionStyle.default,
+                                     handler: handler)
         
         alert.addAction(okAction)
         
         present(alert, animated: true, completion: nil)
     }
     
+    // Utility for alert with question
     func alertQuestion(_ title: String, message: String, okHandler: @escaping (_ action: UIAlertAction?) -> Void) {
         let alert = UIAlertController(title: title, message:message,
                                       preferredStyle: UIAlertControllerStyle.alert)

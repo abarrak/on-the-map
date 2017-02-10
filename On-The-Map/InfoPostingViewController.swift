@@ -69,6 +69,8 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
     }
 
     private func geocodeThenProceed() {
+        setUIEnabled(false)
+        
         let geocoder = CLGeocoder()
         
         geocoder.geocodeAddressString(locationText.text!) { (placemarks, error) in
@@ -81,6 +83,11 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
                 self.geocodedLocation = placemark.location!.coordinate
                 self.performSegue(withIdentifier: "linkPosting", sender: self)
             }
+            self.setUIEnabled(true)
         }
+    }
+
+    func setUIEnabled(_ enabled: Bool) {
+        findButton.isEnabled = enabled
     }
 }
