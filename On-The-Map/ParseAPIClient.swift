@@ -86,7 +86,6 @@ class ParseAPIClient : AbstractAPI {
             components.queryItems!.append(queryItem)
         }
         
-        print(components.url!)
         return components.url!
     }
     

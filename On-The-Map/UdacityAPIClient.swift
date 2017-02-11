@@ -138,7 +138,6 @@ class UdacityAPIClient: AbstractAPI {
         components.scheme = UdacityAPIClient.Constants.ApiScheme
         components.host = UdacityAPIClient.Constants.ApiHost
         components.path = UdacityAPIClient.Constants.ApiPath + (withPathExtension ?? "") // C# memories ...
-        // print(components.url!)
         return components.url!
     }
     

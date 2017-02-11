@@ -29,7 +29,6 @@ extension ParseAPIClient {
             
             // Did the request failed?
             if error != nil {
-                print(error!)
                 completionHandler(false, nil, "Fetching students' info failed.")
                 return
             }
@@ -60,7 +59,6 @@ extension ParseAPIClient {
             
             // Did the request failed?
             if error != nil {
-                print(error!)
                 completionHandler(false, nil, "Fetching student's info failed.")
                 return
             }
