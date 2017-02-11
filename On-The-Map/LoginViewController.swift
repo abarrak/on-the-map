@@ -143,21 +143,4 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private func isUserCredentialBlank() -> Bool {
         return (emailText.text?.isBlank())! || (passwordText.text?.isBlank())! ? true : false
     }
-    
-    // Mark: - Helpers
-    
-    private func stylizeTextField(_ textField: UITextField) {
-        // Some styling.
-        let memeTextAttributes = [
-            NSStrokeColorAttributeName : UIColor.black,
-            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)!,
-        ]
-        textField.defaultTextAttributes = memeTextAttributes
-        
-        // Position in the center.
-        textField.textAlignment = NSTextAlignment.center
-        
-        // Make background transparent.
-        textField.backgroundColor = UIColor.clear
-    }    
 }
