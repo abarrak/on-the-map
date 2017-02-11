@@ -16,6 +16,7 @@
 		B8430F871E44C01B00AC69CD /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8430F861E44C01B00AC69CD /* DateExtension.swift */; };
 		B8430F891E45205200AC69CD /* InfoPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8430F881E45205200AC69CD /* InfoPostingViewController.swift */; };
 		B8430F8B1E45207D00AC69CD /* LinkPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8430F8A1E45207D00AC69CD /* LinkPostingViewController.swift */; };
+		B8797ED81E4F6C51004A2672 /* UrlValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8797ED71E4F6C51004A2672 /* UrlValidator.swift */; };
 		B8A87D761E4F486F00E6F8A2 /* StudentsInformationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A87D751E4F486F00E6F8A2 /* StudentsInformationList.swift */; };
 		B8AABE641E32C4400063BAA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AABE631E32C4400063BAA9 /* AppDelegate.swift */; };
 		B8AABE661E32C4400063BAA9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AABE651E32C4400063BAA9 /* RegistrationViewController.swift */; };
@@ -65,6 +66,7 @@
 		B8430F861E44C01B00AC69CD /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		B8430F881E45205200AC69CD /* InfoPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoPostingViewController.swift; sourceTree = "<group>"; };
 		B8430F8A1E45207D00AC69CD /* LinkPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkPostingViewController.swift; sourceTree = "<group>"; };
+		B8797ED71E4F6C51004A2672 /* UrlValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlValidator.swift; sourceTree = "<group>"; };
 		B8A87D751E4F486F00E6F8A2 /* StudentsInformationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsInformationList.swift; sourceTree = "<group>"; };
 		B8AABE601E32C4400063BAA9 /* On-The-Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On-The-Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8AABE631E32C4400063BAA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				B8BAC61A1E3BA1E40068A741 /* StringExtension.swift */,
 				B8430F861E44C01B00AC69CD /* DateExtension.swift */,
 				B8BAC6221E3BC9A50068A741 /* ViewControllerExtension.swift */,
+				B8797ED71E4F6C51004A2672 /* UrlValidator.swift */,
 				B8CDE27A1E4E7F910032B6D7 /* Reachability.swift */,
 				B8AABE6A1E32C4400063BAA9 /* Assets.xcassets */,
 				B8AABE6C1E32C4400063BAA9 /* LaunchScreen.storyboard */,
@@ -410,6 +413,7 @@
 				B8CDE27B1E4E7F910032B6D7 /* Reachability.swift in Sources */,
 				B8430F871E44C01B00AC69CD /* DateExtension.swift in Sources */,
 				B8430F891E45205200AC69CD /* InfoPostingViewController.swift in Sources */,
+				B8797ED81E4F6C51004A2672 /* UrlValidator.swift in Sources */,
 				B8341E531E3925CB00402193 /* UdacityAPIClient.swift in Sources */,
 				B8341E541E3925CB00402193 /* UdacityAPIConstants.swift in Sources */,
 				B8BAC61B1E3BA1E40068A741 /* StringExtension.swift in Sources */,

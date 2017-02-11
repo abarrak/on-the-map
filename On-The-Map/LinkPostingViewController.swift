@@ -55,7 +55,7 @@ class LinkPostingViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        if isLinkValid(link: linkShareText.text) {
+        if UrlValidator.isLinkValid(link: linkShareText.text) {
             sendNewPinInfoThenDiscard()
         } else {
             alertMessage("Invalid URL", message: "Please type in a valid link address.")
@@ -173,16 +173,7 @@ class LinkPostingViewController: UIViewController, UITextFieldDelegate {
     func setUIEnabled(_ enabled: Bool) {
         submitButton.isEnabled = enabled
     }
-    
-    private func isLinkValid(link: String?) -> Bool {
-        if let urlString = link {
-            if let url = URL(string: urlString) {
-                return UIApplication.shared.canOpenURL(url)
-            }
-        }
-        return false
-    }
-    
+        
     func alertThenExit(_ title: String, message: String) {
         setUIEnabled(true)
         alertMessage(title, message: message, completionHandler: { (action) in self.discard() })

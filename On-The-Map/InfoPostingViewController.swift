@@ -76,7 +76,6 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
 
     // Mark: - Methods
     
-
     private func geocodeThenProceed() {
         let geocoder = CLGeocoder()
         
