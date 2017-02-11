@@ -37,7 +37,7 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
         locationText.delegate = self
     }
 
-    // Mark: - Actions
+    // Mark: - Actions and Protocol
 
     @IBAction func cancel(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
@@ -62,13 +62,20 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // Mark: - Methods
+    // Dissmiss keyboard once enter is pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if locationText.text! == locationTextPlaceholder {
             locationText.text = ""
         }
     }
+
+    // Mark: - Methods
+    
 
     private func geocodeThenProceed() {
         let geocoder = CLGeocoder()

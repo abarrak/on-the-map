@@ -43,7 +43,7 @@ class LinkPostingViewController: UIViewController, UITextFieldDelegate {
         zoomToLocation()
     }
     
-    // Mark: - Actions
+    // Mark: - Actions and Protocol
     
     @IBAction func cancel(_ sender: UIButton) {
         discard()
@@ -61,14 +61,20 @@ class LinkPostingViewController: UIViewController, UITextFieldDelegate {
             alertMessage("Invalid URL", message: "Please type in a valid link address.")
         }
     }
-    
-    // Mark: - Methods
-    
+
+    // Dissmiss keyboard once enter is pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+   
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if linkShareText.text! == linkShareTextPlaceholder {
             linkShareText.text = ""
         }
     }
+
+    // Mark: - Methods
     
     func discard() {
         presentingViewController!.presentingViewController!.dismiss(animated: true, completion: nil)
