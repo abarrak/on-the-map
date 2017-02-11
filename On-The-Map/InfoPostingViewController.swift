@@ -83,19 +83,21 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
         geocoder.geocodeAddressString(locationText.text!) { (placemarks, error) in
             if error != nil {
                 // self.alertMessage("Error", message: error.localizedDescription)
-                self.alertMessage("Not Found", message: "Your location could not be found on the map.")
-            }
-            
-            if let placemark = placemarks?.first {
+                self.alertMessage("Not Found",
+                                  message: "Your location could not be found on the map.",
+                                  completionHandler: { (a) in return })
+            } else if let placemark = placemarks?.first {
                 self.geocodedLocation = placemark.location!.coordinate
                 self.performSegue(withIdentifier: "linkPosting", sender: self)
             }
+            
+            // after geocoding, always set UI and indicator back to normal.
             performUIUpdatesOnMain { self.setUIEnabled(true) }
         }
     }
 
     func setUIEnabled(_ enabled: Bool) {
-        spinner.isHidden = !enabled
+        spinner.isHidden = enabled
         findButton.isEnabled = enabled
     }
 }

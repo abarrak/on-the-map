@@ -55,7 +55,7 @@ class UdacityAPIClient: AbstractAPI {
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                reportError("There was an error with the login process: \(error)")
+                reportError("There was an error with the login process: \(error!.localizedDescription)")
                 return
             }
             
@@ -105,7 +105,7 @@ class UdacityAPIClient: AbstractAPI {
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                reportError("There was an error with the login process: \(error)")
+                reportError("There was an error with the reterival process: \(error!.localizedDescription)")
                 return
             }
             

@@ -207,8 +207,8 @@
                                     <action selector="cancel:" destination="fdH-uS-n2w" eventType="touchUpInside" id="kha-FS-Oxw"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="NdB-6u-ARe">
-                                <rect key="frame" x="0.0" y="60" width="414" height="340"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="NdB-6u-ARe">
+                                <rect key="frame" x="0.0" y="60" width="414" height="322"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PeF-ha-D0E">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -237,7 +237,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2VV-xX-Sui">
-                                        <rect key="frame" x="0.0" y="140" width="414" height="100"/>
+                                        <rect key="frame" x="0.0" y="130" width="414" height="100"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Enter your location here" textAlignment="center" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="lVa-vw-qpe">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -251,11 +251,11 @@
                                             <constraint firstAttribute="height" constant="100" id="tkZ-0O-rnh"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="dvs-9m-rVK">
-                                        <rect key="frame" x="0.0" y="280" width="414" height="60"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dvs-9m-rVK">
+                                        <rect key="frame" x="0.0" y="260" width="414" height="62"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSI-WJ-bls">
-                                                <rect key="frame" x="107" y="0.0" width="200" height="31"/>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSI-WJ-bls">
+                                                <rect key="frame" x="107" y="0.0" width="200" height="34"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="umz-AK-Lyn"/>
@@ -269,12 +269,12 @@
                                                 </connections>
                                             </button>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="rDr-eu-rJf">
-                                                <rect key="frame" x="197" y="43" width="20" height="17"/>
+                                                <rect key="frame" x="197" y="42" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="tNg-Ca-OK0"/>
+                                                </constraints>
                                             </activityIndicatorView>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="qgN-Jq-9Wa"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
