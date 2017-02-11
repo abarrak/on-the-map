@@ -167,8 +167,6 @@
 				B8AABE961E32C72E0063BAA9 /* Controller */,
 				B8AABE951E32C7260063BAA9 /* View */,
 				B8AABE941E32C7200063BAA9 /* Model */,
-				B8341E4F1E39257800402193 /* StudentInformation.swift */,
-				B8A87D751E4F486F00E6F8A2 /* StudentsInformationList.swift */,
 				B8AABE911E32C4EA0063BAA9 /* Supporting Files */,
 			);
 			path = "On-The-Map";
@@ -212,6 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				B8CC2C1D1E3659C7007845F1 /* Clients */,
+				B8341E4F1E39257800402193 /* StudentInformation.swift */,
+				B8A87D751E4F486F00E6F8A2 /* StudentsInformationList.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
