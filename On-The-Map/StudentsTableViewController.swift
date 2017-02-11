@@ -43,10 +43,9 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Navigate to selected student pin on the map.
-        let mapVC = tabBarController?.childViewControllers[0] as! MapViewController
-        mapVC.studentInfoToVisit = AllStudentsInformation.list?[indexPath.row]
-        
-        tabBarController?.selectedIndex = 0
+        if let mediumUrl = AllStudentsInformation.list?[indexPath.row].mediaURL {
+            let app = UIApplication.shared
+            app.open(URL(string: mediumUrl)!, options: [:], completionHandler: nil)
+        }
     }
 }
