@@ -9,6 +9,6 @@
 import Foundation
 
 class AllStudentsInformation {
-    // Stores the retreived list of students from Parse.
+    // Stores the retrieved list of students from Parse.
     static var list: [StudentInformation]? = nil
 }
