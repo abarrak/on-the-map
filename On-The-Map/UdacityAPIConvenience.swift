@@ -31,7 +31,7 @@ extension UdacityAPIClient {
         
         let _ = taskForSession(httpMethod: "POST", jsonBody: body) { (results, error) in
             if error != nil {
-                completionHandlerForSession(false, nil, nil, "Login Failed (Request Error): \(error)")
+                completionHandlerForSession(false, nil, nil, "Login Failed: \(error!.localizedDescription)")
                 return
             }
                 
@@ -66,7 +66,7 @@ extension UdacityAPIClient {
 
         let _ = taskForSession(httpMethod: "DELETE", jsonBody: nil, addCsrf: true) { (results, error) in
             if error != nil {
-                completionHandlerForSession(false, "Logout Failed. \(error)")
+                completionHandlerForSession(false, "Logout Failed. \(error!.localizedDescription)")
                 return
             }
             

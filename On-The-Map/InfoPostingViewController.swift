@@ -35,8 +35,8 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         locationText.delegate = self
-        spinner.isHidden = true
     }
+
     // Mark: - Actions
 
     @IBAction func cancel(_ sender: UIButton) {
@@ -44,13 +44,11 @@ class InfoPostingViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func findOnMap(_ sender: UIButton) {
-        setUIEnabled(false)
-        
         // Skip if location text is empty.
         if (locationText.text?.isBlank())! || locationText.text! == locationTextPlaceholder {
             return
         }
-        
+        setUIEnabled(false)
         geocodeThenProceed()
     }
 

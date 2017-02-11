@@ -38,8 +38,7 @@ class MapTabBarController: UITabBarController {
     func logoutPressed() {
         setUIEnabled(false)
         
-        UdacityAPIClient.sharedInstance().logout {
-            (sucess, errorMsg) in
+        UdacityAPIClient.sharedInstance().logout { (sucess, errorMsg) in
             
             if !sucess {
                 performUIUpdatesOnMain({

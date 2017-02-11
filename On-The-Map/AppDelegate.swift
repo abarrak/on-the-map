@@ -11,9 +11,15 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    // Mark: - Properties
+
     var window: UIWindow?
+    var networkReachable: Bool = true
+    
+    // Mark: - Methods
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         return true
     }
 }

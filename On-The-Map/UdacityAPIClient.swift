@@ -29,6 +29,12 @@ class UdacityAPIClient: AbstractAPI {
      func taskForSession(httpMethod: String, jsonBody: String?, addCsrf: Bool = false,
                         completionHandler: @escaping handlerType) {
         
+        // Exit properly if no connection available.
+        if !isNetworkAvaliable() {
+            notifyDisconnectivity(completionHandler)
+            return
+        }
+
         // Build the request from URL and configure it ..
         let apiMethod = "/\(Constants.Methods.Session)"
         
@@ -76,7 +82,13 @@ class UdacityAPIClient: AbstractAPI {
     }
     
     func taskForRetrieval(userKey: String, completionHandler: @escaping handlerType) {
-        
+
+        // Exit properly if no connection available.
+        if !isNetworkAvaliable() {
+            notifyDisconnectivity(completionHandler)
+            return
+        }
+
         // Build the request from URL and configure it ..
         let apiMethod = "/\(Constants.Methods.Users)/\(userKey)"
         

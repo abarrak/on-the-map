@@ -25,6 +25,12 @@ class ParseAPIClient : AbstractAPI {
     func genericParseTask(apiMethod: String, parameters: [String:AnyObject], httpMethod: String,
                           jsonBody: String?, completionHandler: @escaping handlerType) {
         
+        // Exit properly if no connection available.
+        if !isNetworkAvaliable() {
+            notifyDisconnectivity(completionHandler)
+            return
+        }
+        
         // Build the request from URL and configure it ..
         var request = URLRequest(url: parseURLFromParameters(parameters, withPathExtension: apiMethod))
         request = configureAPIRequest(requestObj: request, method: httpMethod, body: jsonBody)
