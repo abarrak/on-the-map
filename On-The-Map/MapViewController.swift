@@ -18,10 +18,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     var annotations = [MKPointAnnotation]()
     
-    var studentsInfo: [StudentInformation]? {
-        return (self.tabBarController as! MapTabBarController).studentsInfoList ?? nil
-    }
-    
     var studentInfoToVisit: StudentInformation?
     
     // Mark: - Life Cycle
@@ -76,7 +72,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func constructAllAnnotations() {
         cleanMap()
         
-        if let studentsInfo = studentsInfo {
+        if let studentsInfo = AllStudentsInformation.list {
             for info in studentsInfo {
                 let annotation = constructAnnotation(studentInfo: info)
                 

@@ -16,6 +16,7 @@
 		B8430F871E44C01B00AC69CD /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8430F861E44C01B00AC69CD /* DateExtension.swift */; };
 		B8430F891E45205200AC69CD /* InfoPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8430F881E45205200AC69CD /* InfoPostingViewController.swift */; };
 		B8430F8B1E45207D00AC69CD /* LinkPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8430F8A1E45207D00AC69CD /* LinkPostingViewController.swift */; };
+		B8A87D761E4F486F00E6F8A2 /* StudentsInformationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A87D751E4F486F00E6F8A2 /* StudentsInformationList.swift */; };
 		B8AABE641E32C4400063BAA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AABE631E32C4400063BAA9 /* AppDelegate.swift */; };
 		B8AABE661E32C4400063BAA9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AABE651E32C4400063BAA9 /* RegistrationViewController.swift */; };
 		B8AABE691E32C4400063BAA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AABE671E32C4400063BAA9 /* Main.storyboard */; };
@@ -64,6 +65,7 @@
 		B8430F861E44C01B00AC69CD /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		B8430F881E45205200AC69CD /* InfoPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoPostingViewController.swift; sourceTree = "<group>"; };
 		B8430F8A1E45207D00AC69CD /* LinkPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkPostingViewController.swift; sourceTree = "<group>"; };
+		B8A87D751E4F486F00E6F8A2 /* StudentsInformationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsInformationList.swift; sourceTree = "<group>"; };
 		B8AABE601E32C4400063BAA9 /* On-The-Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On-The-Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8AABE631E32C4400063BAA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8AABE651E32C4400063BAA9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				B8AABE951E32C7260063BAA9 /* View */,
 				B8AABE941E32C7200063BAA9 /* Model */,
 				B8341E4F1E39257800402193 /* StudentInformation.swift */,
+				B8A87D751E4F486F00E6F8A2 /* StudentsInformationList.swift */,
 				B8AABE911E32C4EA0063BAA9 /* Supporting Files */,
 			);
 			path = "On-The-Map";
@@ -395,6 +398,7 @@
 				B8430F8B1E45207D00AC69CD /* LinkPostingViewController.swift in Sources */,
 				B8BAC6271E3BF8B80068A741 /* AbstractAPI.swift in Sources */,
 				B8AABE931E32C6ED0063BAA9 /* GCDBlackBox.swift in Sources */,
+				B8A87D761E4F486F00E6F8A2 /* StudentsInformationList.swift in Sources */,
 				B8341E501E39257800402193 /* StudentInformation.swift in Sources */,
 				B8BAC6211E3BBE930068A741 /* StudentsTableViewController.swift in Sources */,
 				B8BAC6251E3BE3920068A741 /* ParseAPIConvenience.swift in Sources */,

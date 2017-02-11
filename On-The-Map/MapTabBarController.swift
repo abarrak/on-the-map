@@ -18,7 +18,8 @@ class MapTabBarController: UITabBarController {
     var refershButton: UIBarButtonItem? = nil
     var pinButton: UIBarButtonItem? = nil
     
-    var studentsInfoList: [StudentInformation]?
+    // `AllStudentsInformation` will students' locations collection into dedicated model.
+    // current user location is held in seprated single model.
     var currentStudentInfo: StudentInformation?
     
     // Mark: - Life Cycle
@@ -54,7 +55,7 @@ class MapTabBarController: UITabBarController {
                 self.userKey = nil
                 
                 _ = self.navigationController?.popToRootViewController(animated: true)
-                self.alertMessage("Success", message: "Logged out successfully.")
+                // self.alertMessage("Success", message: "Logged out successfully.")
             })
         }
     }
@@ -118,7 +119,7 @@ class MapTabBarController: UITabBarController {
             }
                 
             performUIUpdatesOnMain({
-                self.studentsInfoList = studentsInfoList
+                AllStudentsInformation.list = studentsInfoList!
                 self.refreshMap()
             })
         }

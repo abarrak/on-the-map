@@ -14,10 +14,6 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
 
     @IBOutlet weak var tableView: UITableView!
     
-    var studentsInfo: [StudentInformation]? {
-        return (self.tabBarController as! MapTabBarController).studentsInfoList ?? nil
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -30,7 +26,7 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Table view data source
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return studentsInfo?.count ?? 0
+        return AllStudentsInformation.list?.count ?? 0
     }
     
     // MARK: - Table view delegate
@@ -39,7 +35,7 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
         let cell = tableView.dequeueReusableCell(withIdentifier: "studentsInfoCell",
                                                  for: indexPath)
         
-        let studentInfo = studentsInfo?[indexPath.row]
+        let studentInfo = AllStudentsInformation.list?[indexPath.row]
         cell.imageView?.image = UIImage(named: "PinIcon")
         cell.textLabel?.text = studentInfo?.fullName ?? "None"
 
@@ -49,7 +45,7 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Navigate to selected student pin on the map.
         let mapVC = tabBarController?.childViewControllers[0] as! MapViewController
-        mapVC.studentInfoToVisit = studentsInfo?[indexPath.row]
+        mapVC.studentInfoToVisit = AllStudentsInformation.list?[indexPath.row]
         
         tabBarController?.selectedIndex = 0
     }
