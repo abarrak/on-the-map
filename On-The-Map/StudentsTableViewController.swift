@@ -44,8 +44,10 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let mediumUrl = AllStudentsInformation.list?[indexPath.row].mediaURL {
-            let app = UIApplication.shared
-            app.open(URL(string: mediumUrl)!, options: [:], completionHandler: nil)
+            if UrlValidator.isLinkValid(link: mediumUrl) {
+                let app = UIApplication.shared
+                app.open(URL(string: mediumUrl)!, options: [:], completionHandler: nil)
+            }
         }
     }
 }
