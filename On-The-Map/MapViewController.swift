@@ -22,7 +22,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return (self.tabBarController as! MapTabBarController).studentsInfoList ?? nil
     }
     
-
+    var studentInfoToVisit: StudentInformation?
+    
     // Mark: - Life Cycle
     
     override func viewDidLoad() {
@@ -32,6 +33,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         constructAllAnnotations()
+        
+        if studentInfoToVisit != nil {
+            visitAnnotation(studentInfoToVisit!)
+        }
     }
 
     // Mark: - Actions & Protocol
@@ -87,6 +92,23 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let _ = constructAnnotation(studentInfo: studentInfo)
     }
     
+    func visitAnnotation(_ studentInfo: StudentInformation) {
+        let lat = studentInfo.latitude, long = studentInfo.longitude
+        
+        if lat == nil || long == nil {
+            return
+        }
+        
+        let latDelta: CLLocationDegrees = 0.5
+        let longDelta: CLLocationDegrees = 0.5
+        
+        let span = MKCoordinateSpanMake(latDelta, longDelta)
+        let location = CLLocationCoordinate2DMake(CLLocationDegrees(lat!), CLLocationDegrees(long!))
+        let region = MKCoordinateRegionMake(location, span)
+        
+        mapView.setRegion(region, animated: true)
+    }
+    
     private func constructAnnotation(studentInfo: StudentInformation) -> MKPointAnnotation? {
         let lat = studentInfo.latitude, long = studentInfo.longitude
         
@@ -115,5 +137,4 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             mapView.removeAnnotations(annotations)
         }
     }
-
 }

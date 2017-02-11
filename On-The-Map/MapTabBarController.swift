@@ -147,7 +147,7 @@ class MapTabBarController: UITabBarController {
     }
     
     private func addToMap(_ studentInfo: StudentInformation) {
-        getMapVC().addAnnotationToMap( studentInfo)
+        getMapVC().addAnnotationToMap(studentInfo)
     }
     
     private func getMapVC() -> MapViewController {

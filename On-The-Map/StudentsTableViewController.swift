@@ -48,5 +48,9 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Navigate to selected student pin on the map.
+        let mapVC = tabBarController?.childViewControllers[0] as! MapViewController
+        mapVC.studentInfoToVisit = studentsInfo?[indexPath.row]
+        
+        tabBarController?.selectedIndex = 0
     }
 }
